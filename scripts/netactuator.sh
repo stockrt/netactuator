@@ -2,7 +2,7 @@
 #
 # start/stop/restart/status do netactuator
 #
-# Author: RogÈrio Schneider (stockrt@gmail.com)
+# Author: Rog√©rio Schneider (stockrt@gmail.com)
 
 
 PID=""
@@ -29,7 +29,7 @@ start()
 			echo "O netactuator foi iniciado sob o pid $PID"
 		fi
 	else
-		echo "O netactuator j· est· rodando sob o pid $PID"
+		echo "O netactuator j√° est√° rodando sob o pid $PID"
 	fi
 }
 
@@ -65,9 +65,9 @@ status()
 
 	if [ "$PID" == "" ]
 	then
-		echo "O netactuator n„o est· rodando"
+		echo "O netactuator n√£o est√° rodando"
 	else
-		echo "O netactuator est· rodando sob o pid $PID"
+		echo "O netactuator est√° rodando sob o pid $PID"
 	fi
 }
 

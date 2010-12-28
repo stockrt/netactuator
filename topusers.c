@@ -130,10 +130,10 @@ void adicionar_registro_arvore (tipostring ip, long recv_f, long recv_b, long se
 
 /*
 // Outra forma de somar as conversacoes
-			// Se enviou frames foi uma conversação onde atuou como source
+			// Se enviou frames foi uma conversaÃ§Ã£o onde atuou como source
 			if (novo_nodo->sent_f)
 				retorno->convs_as_source += 1;
-			// Se recebeu frames foi uma conversação onde atuou como destino
+			// Se recebeu frames foi uma conversaÃ§Ã£o onde atuou como destino
 			if (novo_nodo->recv_f)
 				retorno->convs_as_destin += 1;
 */
@@ -159,14 +159,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->recv_f > comeca->recv_f)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->recv_f = to_insert->recv_f;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -179,14 +179,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->sent_f > comeca->sent_f)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->sent_f = to_insert->sent_f;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -199,14 +199,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->recv_b > comeca->recv_b)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->recv_b = to_insert->recv_b;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -219,14 +219,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->sent_b > comeca->sent_b)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->sent_b = to_insert->sent_b;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -239,14 +239,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->convs_as_source > comeca->convs_as_source)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->convs_as_source = to_insert->convs_as_source;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -259,14 +259,14 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 			// Se o valor proposto eh maior do que o atual neste nodo, insere
 			if (to_insert->convs_as_destin > comeca->convs_as_destin)
 			{
-				// Inserção 
+				// InserÃ§Ã£o 
 				strcpy(comeca->info, to_insert->info);
 				strcpy(comeca->iface, to_insert->iface);
 				comeca->convs_as_destin = to_insert->convs_as_destin;
 				break;
-			//	comeca = NULL; // sai do laço
+			//	comeca = NULL; // sai do laÃ§o
 			}
-			// Vai ao próximo nodo
+			// Vai ao prÃ³ximo nodo
 			else
 				comeca = comeca->p;
 		}
@@ -292,7 +292,7 @@ void gerar_top_users (SearchTree comeca)
 }
 
 
-// Mostra a lista de Top Users de acordo com o relatório pedido
+// Mostra a lista de Top Users de acordo com o relatÃ³rio pedido
 void mostrar_top_users (tipostring tipo)
 {
 	SeqList comeca=NULL;

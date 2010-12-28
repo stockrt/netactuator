@@ -120,7 +120,7 @@ function deleteDados($tb, $dado) {
 		$sql = "DELETE FROM $tb WHERE id='".$_GET['id']."';";
 		$query = mysql_query($sql);
 	} else
-		echo("Erro. Valor n„o setado!");
+		echo("Erro. Valor n√£o setado!");
 }
 
 function mysql_fetch_all($result) {
@@ -140,7 +140,7 @@ function getHostGraphics($dados) {
 		if(file_exists("graph/".$dados."_".$time."_day.png"))
 			print "<center><b><a href='graphics.php?host=".$dados."'>".$dados."</a><br></b>";
 		if(!file_exists("graph/".$dados."_".$time."_day.png"))
-				print "<b>".$dados."</b> (Arquivo n„o encontrado) <br>";
+				print "<b>".$dados."</b> (Arquivo n√£o encontrado) <br>";
 	}
 }
 

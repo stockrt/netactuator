@@ -1,12 +1,12 @@
-O netactuator foi idealizado e programado por mim como parte do meu TCC (trabalho de conclusão) para o curso de graduação 
-em Ciência da Computação (UNICRUZ - Universidade de Cruz Alta / RS / Brasil).
+O netactuator foi idealizado e programado por mim como parte do meu TCC (trabalho de conclusÃ£o) para o curso de graduaÃ§Ã£o 
+em CiÃªncia da ComputaÃ§Ã£o (UNICRUZ - Universidade de Cruz Alta / RS / Brasil).
 
 And the thanks goes to...
 
-- prof. Antônio Rodrigo Delepiane de Vit (UNICRUZ), por orientar meu trabalho.
+- prof. AntÃ´nio Rodrigo Delepiane de Vit (UNICRUZ), por orientar meu trabalho.
 - profa. Liane Margarida Rockenbach Tarouco (UFRGS), por co-orientar meu trabalho.
 - Lucas Schneider, por programar a interface web toda do netactuator. Cada linha PHP/HTML neste sistema eu devo a ele.
-- Jeferson Franke, por assumir a continuidade deste projeto em seu TCC, efetuando alterações no código-fonte e na interface web.
+- Jeferson Franke, por assumir a continuidade deste projeto em seu TCC, efetuando alteraÃ§Ãµes no cÃ³digo-fonte e na interface web.
 
 
 netactuator on Web:
@@ -19,5 +19,5 @@ Project Home: http://netactuator.googlecode.com
 Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
 Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
 
-Author: Rogério Schneider (stockrt@gmail.com)
+Author: RogÃ©rio Schneider (stockrt@gmail.com)
 http://stockrtweb.homelinux.com

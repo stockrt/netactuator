@@ -1,4 +1,4 @@
-Passos a serem executados para a compilaÁ„o e instalaÁ„o do netactuator.
+Passos a serem executados para a compila√ß√£o e instala√ß√£o do netactuator.
 
 
 netactuator on Web:
@@ -11,7 +11,7 @@ Project Home: http://netactuator.googlecode.com
 Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
 Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
 
-Author: RogÈrio Schneider (stockrt@gmail.com)
+Author: Rog√©rio Schneider (stockrt@gmail.com)
 http://stockrtweb.homelinux.com
 
 
@@ -19,7 +19,7 @@ http://stockrtweb.homelinux.com
 # FreeBSD                                                                                                      #
 ################################################################################################################
 
-# MySQL 5 (bin·rios e headers)
+# MySQL 5 (bin√°rios e headers)
 cd /usr/ports/databases/mysql50-client
 make install
 cd /usr/ports/databases/mysql50-server
@@ -43,22 +43,22 @@ make install
 cd /usr/ports/net-mgmt/pmacct
 make install
 
-# RRDTool (bin·rios e headers)
+# RRDTool (bin√°rios e headers)
 cd /usr/ports/net/rrdtool
 make install
 
-# Alguns links precisam ser criados para a correta compilaÁ„o do netactuator:
+# Alguns links precisam ser criados para a correta compila√ß√£o do netactuator:
 
-# Att! N„o linkar nada antes de ter o php e php-mysql instalados !!! Isso gera erro de
-# compilaÁ„o em:
+# Att! N√£o linkar nada antes de ter o php e php-mysql instalados !!! Isso gera erro de
+# compila√ß√£o em:
 ## checking for mysql_close in -lmysqlclient... no
 ## checking for mysql_error in -lmysqlclient... no
 
-# O netactuator busca essa biblioteca do MySQL no diretÛrio /usr/local/lib:
+# O netactuator busca essa biblioteca do MySQL no diret√≥rio /usr/local/lib:
 cd /usr/local/lib
 ln -s mysql/libmysqlclient.so.15.0.0
 
-# Headers para compilaÁ„o
+# Headers para compila√ß√£o
 cd /usr/include
 ln -s /usr/local/include/mysql
 ln -s /usr/local/include/rrd.h
@@ -66,7 +66,7 @@ ln -s /usr/local/include/rrd.h
 ldconfig
 
 # Se depois de linkar precisar instalar ou atualizar suportes ao MySQL, remova os links criados acima, instale/atualize os suportes ao 
-# MySQL, e depois refaÁa os links.
+# MySQL, e depois refa√ßa os links.
 
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
@@ -106,7 +106,7 @@ cd pmacct-0.11.5
 make
 make install
 
-A vers„o mencionada j· se encontra em 'misc'.
+A vers√£o mencionada j√° se encontra em 'misc'.
 
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
@@ -119,7 +119,7 @@ Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 # Kurumin Linux / Debian Linux                                                                                 #
 ################################################################################################################
 
-# MySQL 5 (bin·rios)
+# MySQL 5 (bin√°rios)
 apt-get install mysql-client
 apt-get install mysql-server
 apt-get install mysql-common
@@ -139,7 +139,7 @@ apt-get install php{4,5}-mysql
 # pmacct
 apt-get install pmacct
 
-# RRDTool (bin·rios)
+# RRDTool (bin√°rios)
 apt-get install rrdtool
 
 # RRDTool (headers)
@@ -179,7 +179,7 @@ Instalar pelo YAST:
 wget ftp://ftp.suntel.com.tr/pub/repo/monitoring/SUSE_Factory/i586/pmacct-0.11.0-15.1.i586.rpm
 rpm -ivh pmacct-0.11.0-15.1.i586.rpm
 
-# O netactuator busca essa biblioteca do MySQL no diretÛrio /usr/local/lib:
+# O netactuator busca essa biblioteca do MySQL no diret√≥rio /usr/local/lib:
 cd /usr/local/lib
 ln -s /usr/lib/libmysqlclient.so.15.0.0
 ldconfig
@@ -200,10 +200,10 @@ ldconfig
 
 **********************************************************************************************************
 
-- Ajuste as configuraÁıes de netactuator.conf:
+- Ajuste as configura√ß√µes de netactuator.conf:
    # cp /usr/local/etc/netactuator/netactuator.conf-dist /usr/local/etc/netactuator/netactuator.conf
 
-- Utilize o script de inicializaÁ„o do banco de dados para comeÁar a usar o netactuator:
+- Utilize o script de inicializa√ß√£o do banco de dados para come√ßar a usar o netactuator:
    # mysql < sql/netactuator-mysql.sql
 
 - Ajuste o seu httpd.conf:
@@ -218,7 +218,7 @@ ldconfig
 - Ou utilize o arquivo fornecido:
    # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf
 
-- Altere os seguintes par‚metros no php.ini:
+- Altere os seguintes par√¢metros no php.ini:
    output_buffering = On
    variables_order = "EGPCS"
    register_globals = On

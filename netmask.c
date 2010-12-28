@@ -26,9 +26,9 @@
  * on netactuator, to filter IPs, matching against to the defined netmask to see if I
  * should or should not consider this IP for processing (filtering, graphing, you name it).
  * The accepted range is saved on the global vector networks_ranges[]
- * defs.h:unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = ip_final, campo 2 = maskbits (inseridos somente na função netmask_paul_davis())
+ * defs.h:unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = ip_final, campo 2 = maskbits (inseridos somente na funÃ§Ã£o netmask_paul_davis())
  *
- * Modification by: Rogério Schneider (stockrt@gmail.com)
+ * Modification by: RogÃ©rio Schneider (stockrt@gmail.com)
  * http://stockrtweb.homelinux.com
  *
  */
@@ -45,7 +45,7 @@ char * my_ntoa(unsigned long ip)
 }
 
 
-// Converte a entrada ip/mask em valores para avaliação no sistema (long).
+// Converte a entrada ip/mask em valores para avaliaÃ§Ã£o no sistema (long).
 // Coloca esses dados em uma tabela.
 void netmask_paul_davis (void)
 {
@@ -58,7 +58,7 @@ void netmask_paul_davis (void)
 
 	for (i_net=0; i_net<num_networks; i_net++)
 	{
-		// Usa a rede e mask definidas no netactuator.conf para conversão
+		// Usa a rede e mask definidas no netactuator.conf para conversÃ£o
 		strcpy(ip_rog, networks[i_net][0]);
 		strcpy(mask_rog, networks[i_net][1]);
 
@@ -112,7 +112,7 @@ void netmask_paul_davis (void)
 		hostmask = ~ntohl(netmask.s_addr);
 		broadcast = network | hostmask;
 
-		// Salva os ranges de rede, ip_inicial e ip_final válidos
+		// Salva os ranges de rede, ip_inicial e ip_final vÃ¡lidos
 		networks_ranges[i_net][0] = network + 1;
 		networks_ranges[i_net][1] = broadcast - 1;
 		networks_ranges[i_net][2] = maskbits;

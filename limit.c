@@ -37,8 +37,8 @@ void checar_limites (SearchTree comeca)
 		checar_limites(comeca->dir);
 		checar_limites(comeca->esq);
 
-		// Verificar se já consta entrada em pattern_def, para poder prosseguir com a avaliação
-		// Só terá entrada registrada em pattern_def caso já tenha atingido um valor mínimo de registros
+		// Verificar se jÃ¡ consta entrada em pattern_def, para poder prosseguir com a avaliaÃ§Ã£o
+		// SÃ³ terÃ¡ entrada registrada em pattern_def caso jÃ¡ tenha atingido um valor mÃ­nimo de registros
 		sprintf(query, "SELECT host FROM %s WHERE host = '%s';", PATTERN_T, comeca->info);
 		res = sql(query, mysql_conn_global);
 
@@ -48,7 +48,7 @@ void checar_limites (SearchTree comeca)
 		}
 		mysql_free_result(res);
 
-		// Se tiver cadastro de pattern, continua, senão insere como clean em mass
+		// Se tiver cadastro de pattern, continua, senÃ£o insere como clean em mass
 		if (flag_prosseguir)
 		{
 			// Pega valor definido no banco
@@ -69,7 +69,7 @@ void checar_limites (SearchTree comeca)
 
 			// Somente executa se tiver algum valor registrado para o host como origem
 			// Evita avaliar hosts que tenham entradas suficientes mas que sejam apenas como destino, sem valores de convs como origem, gerando valor nulo ou zero
-			// Esta situação não vai ocorrer por conta do insert into com select convs_as_source > 0
+			// Esta situaÃ§Ã£o nÃ£o vai ocorrer por conta do insert into com select convs_as_source > 0
 			if (avg_conv_host > 0)
 			{
 				// Se for maior do que o limite especificado
@@ -91,10 +91,10 @@ void checar_limites (SearchTree comeca)
 					printf("\n");
 */
 
-					// Atuação
+					// AtuaÃ§Ã£o
 					if (bloquear_host(comeca->info, 1))
 					{
-						// Somente registra evento e avisa por mail, caso ainda não esteja bloqueado
+						// Somente registra evento e avisa por mail, caso ainda nÃ£o esteja bloqueado
 						registrar_evento(comeca->info, comeca->convs_as_source, avg_conv_host, "Bloqueado");
 						avisar_contatos_adm(comeca, avg_conv_host);
 					}
@@ -125,14 +125,14 @@ void checar_limites (SearchTree comeca)
 		} // if flag_prosseguir (cadastrado em pattern)
 		else
 		{
-			// Este seria o caso das primeiras inserções do host no banco, insere clean.
+			// Este seria o caso das primeiras inserÃ§Ãµes do host no banco, insere clean.
 				sprintf(query, "INSERT INTO %s VALUES ('%s', '%ld', '%ld', '%ld', '%ld', '%ld', '%ld', '%s', '%s', '%s', '%d', '%d', '%s');",
 					MASS_T, comeca->info, comeca->convs_as_source, comeca->convs_as_destin, comeca->recv_f, comeca->sent_f, comeca->recv_b, comeca->sent_b, data, hora, week_day, flow_capture_time_min, FLAG_CLEAN, comeca->iface);
 				sql(query, mysql_conn_global);
 		} // else flag_prosseguir (cadastrado em pattern)
 
 
-		// Cria gráficos com RRDTools para qualquer IP capturado que esteja cadastrado em NETWORKS_T
+		// Cria grÃ¡ficos com RRDTools para qualquer IP capturado que esteja cadastrado em NETWORKS_T
 		strcpy(graph.info, comeca->info);
 		graph.recv_f = comeca->recv_f;
 		graph.sent_f = comeca->sent_f;
@@ -145,8 +145,8 @@ void checar_limites (SearchTree comeca)
 
 //		flag_copia_local_ok = 0;
 //		pthread_create(&thread, NULL, (void *) &rrd_rog, (graph_t *) &graph);
-//		// Aguarda a cópia local ser concluída pela thread para prosseguir. Aqui existe a perda de contexto da struct, no 
-//		// retorno da função, por isso a flag (wait_lock).
+//		// Aguarda a cÃ³pia local ser concluÃ­da pela thread para prosseguir. Aqui existe a perda de contexto da struct, no 
+//		// retorno da funÃ§Ã£o, por isso a flag (wait_lock).
 		rrd_rog(&graph);
 //		while (!flag_copia_local_ok)
 //			;

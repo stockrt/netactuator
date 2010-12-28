@@ -5,12 +5,12 @@ include "include/connect.php";
 include "include/functionLayout.php";
 include "include/functions.php";
 include "include/refresh.php";
-//tipo de gr·fico
+//tipo de gr√°fico
 $type = $_GET['type'];
 
 
 if (!$result) {
-    print "DB Error, n„o pude listar as tabelas\n";
+    print "DB Error, n√£o pude listar as tabelas\n";
     print 'MySQL Error: ' . mysql_error();
     exit;
 }
@@ -27,12 +27,12 @@ if(!isset($host)) {
 		if(file_exists("graph/".$dados."_".$time."_".$type."_day.png"))
 			print "<b><a href='graphics.php?host=".$dados."&type=".$type."'>".$dados."</a><br></b>";
 		if(!file_exists("graph/".$dados."_".$time."_".$type."_day.png"))
-				print $dados." - Gr·fico n„o disponÌvel<br>";
+				print $dados." - Gr√°fico n√£o dispon√≠vel<br>";
 	}
 
 } elseif (isset($host)){
 	print "<center><b><font size='3'>$host - $type</font><br><br>";
-	//print "Di·rio<br>";
+	//print "Di√°rio<br>";
 	print "<img src='graph/".$host."_".$time."_".$type."_day.png'><br><br>";
 	//print "Semanal<br>";
 	print "<img src='graph/".$host."_".$time."_".$type."_week.png'><br><br>";

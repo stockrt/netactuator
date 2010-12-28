@@ -17,7 +17,7 @@
  */
 
 
-// Atualiza a tabela de padrão de comportamento
+// Atualiza a tabela de padrÃ£o de comportamento
 void update_pattern_def (void)
 {
 	MYSQL *conn=NULL;
@@ -27,7 +27,7 @@ void update_pattern_def (void)
 	tipostring query;
 	time_t data_hora;
 	struct tm *sdata;
-	int last_value_hour=-1;         // em cada laço do while principal ele é avaliado
+	int last_value_hour=-1;         // em cada laÃ§o do while principal ele Ã© avaliado
 
 
 	while (1)
@@ -36,10 +36,10 @@ void update_pattern_def (void)
 		time(&data_hora);
 		sdata = localtime(&data_hora);
 
-		// 6 - ATUALIZAÇÃO DE PADRÃO COMPORTAMENTAL
+		// 6 - ATUALIZAÃ‡ÃƒO DE PADRÃƒO COMPORTAMENTAL
 		// Se o valor da hora for diferente do valor anterior
-		// então é uma nova hora, e o update da tabela pattern_def
-		// deverá ser realizado
+		// entÃ£o Ã© uma nova hora, e o update da tabela pattern_def
+		// deverÃ¡ ser realizado
 		if (sdata->tm_hour != last_value_hour)
 //		if (sdata->tm_min != last_value_hour)
 		{

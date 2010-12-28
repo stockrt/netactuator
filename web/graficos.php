@@ -21,7 +21,7 @@ $time = mysql_result($res_time, 0);
 $time = $time*60;
 
 
-//inicio o critÈrio e recebo qualquer cadeia que se deseje procurar 
+//inicio o crit√©rio e recebo qualquer cadeia que se deseje procurar 
 $criterio = ""; 
 if ($_GET["criterio"]!=""){ 
     $txt_criterio = $_GET["criterio"]; 
@@ -30,7 +30,7 @@ if ($_GET["criterio"]!=""){
 
 //Limito a busca 
 $TAMANHO_PAGINA = 20; 
-//examino a p·gina a mostrar e o inicio do registro a mostrar 
+//examino a p√°gina a mostrar e o inicio do registro a mostrar 
 $pagina = $_GET["pagina"]; 
 if (!$pagina) { 
     $inicio = 0; 
@@ -39,21 +39,21 @@ if (!$pagina) {
 else { 
     $inicio = ($pagina - 1) * $TAMANHO_PAGINA; 
 } 
-//vejo o n˙mero total de campos que h· na tabela com essa busca 
+//vejo o n√∫mero total de campos que h√° na tabela com essa busca 
 //$ssql = "SELECT host FROM storage_pattern_def " . $criterio; 
 $ssql = "SELECT DISTINCT host FROM storage_mass " . $criterio; 
 $rs = mysql_query($ssql,$connect); 
 $num_total_registos = mysql_num_rows($rs); 
 
-//calculo o total de p·ginas 
+//calculo o total de p√°ginas 
 $total_paginas = ceil($num_total_registos / $TAMANHO_PAGINA); 
 
-//ponho o n˙mero de registros total, o tamanho de p·gina e a p·gina que se mostra 
-echo "N˙mero de registros encontrados: " . $num_total_registos . " ($pagina - $total_paginas)<br><br>"; 
-//echo "Mostram-se p·ginas de " . $TAMANHO_PAGINA . " registros cada uma<br>"; 
-//echo "A mostrar a p·gina " . $pagina . " de " . $total_paginas . "<p>"; 
+//ponho o n√∫mero de registros total, o tamanho de p√°gina e a p√°gina que se mostra 
+echo "N√∫mero de registros encontrados: " . $num_total_registos . " ($pagina - $total_paginas)<br><br>"; 
+//echo "Mostram-se p√°ginas de " . $TAMANHO_PAGINA . " registros cada uma<br>"; 
+//echo "A mostrar a p√°gina " . $pagina . " de " . $total_paginas . "<p>"; 
 
-//construo a sentenÁa SQL 
+//construo a senten√ßa SQL 
 //$ssql = "SELECT host FROM storage_pattern_def " . $criterio . " LIMIT " . $inicio . "," . $TAMANHO_PAGINA; 
 $ssql = "SELECT DISTINCT host FROM storage_mass " . $criterio . " LIMIT " . $inicio . "," . $TAMANHO_PAGINA; 
 $rs = mysql_query($ssql);
@@ -69,22 +69,22 @@ for($i=0;$i < $max; $i++) {
     	 &nbsp;&nbsp;<a href='graphics.php?host=".$dados."&type=base' target='main'>base</a><br></b>";
         }
         if(!file_exists("graph/".$dados."_".$time."_traf_day.png"))
-    			print $dados." - Gr·fico n„o disponÌvel<br>";
+    			print $dados." - Gr√°fico n√£o dispon√≠vel<br>";
 
 }
 echo("<br><br>");
-//fechamos o conjunto de resultado e a conex„o com a base de dados 
+//fechamos o conjunto de resultado e a conex√£o com a base de dados 
 mysql_free_result($rs); 
 mysql_close($connect); 
 
-//mostro os diferentes Ìndices das p·ginas, se È que h· v·rias p·ginas 
+//mostro os diferentes √≠ndices das p√°ginas, se √© que h√° v√°rias p√°ginas 
 if ($total_paginas> 1){ 
     for ($i=1;$i<=$total_paginas;$i++){ 
        if ($pagina == $i) 
-          //se mostro o Ìndice da p·gina atual, n„o coloco link 
+          //se mostro o √≠ndice da p√°gina atual, n√£o coloco link 
           echo "| <b> $pagina </b> "; 
        else 
-          //se o Ìndice n„o corresponde com a p·gina mostrada atualmente, coloco o link para ir a essa p·gina 
+          //se o √≠ndice n√£o corresponde com a p√°gina mostrada atualmente, coloco o link para ir a essa p√°gina 
           echo "| <a href='graficos.php?pagina=" . $i . "&criterio=" . $txt_criterio . "'> " . $i . "</a> "; 
     } 
 	echo " |";

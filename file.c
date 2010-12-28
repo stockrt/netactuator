@@ -17,7 +17,7 @@
  */
 
 
-// FunÁ„o que padroniza procedimento de abertura de arquivos
+// Fun√ß√£o que padroniza procedimento de abertura de arquivos
 FILE *rfopen (tipostring file_temp, tipostring modo)
 {
 	FILE *temp_handler;
@@ -37,7 +37,7 @@ FILE *rfopen (tipostring file_temp, tipostring modo)
 }
 
 
-// FunÁ„o que padroniza procedimento de abertura de pipes de comandos
+// Fun√ß√£o que padroniza procedimento de abertura de pipes de comandos
 FILE *rpopen (tipostring cmd_temp, tipostring modo)
 {
 	FILE *temp_handler;
@@ -57,7 +57,7 @@ FILE *rpopen (tipostring cmd_temp, tipostring modo)
 }
 
 
-// Verifica se um IP pertence a uma das redes definidas pelo usu·rio
+// Verifica se um IP pertence a uma das redes definidas pelo usu√°rio
 int is_network_defined (tipostring info)
 {
         struct in_addr addr;
@@ -78,13 +78,13 @@ int is_network_defined (tipostring info)
 			}
 	}
 
-	// N„o pertence a nenhuma das redes definidas
+	// N√£o pertence a nenhuma das redes definidas
 //	printf("IP %s NAO pertence a uma das redes definidas.\n", info);
 	return 0;
 }
 
 
-// Varre a coleta gerada pelo pmacctd para separar/contabilizar as conversaÁıes e dados de tr·fego
+// Varre a coleta gerada pelo pmacctd para separar/contabilizar as conversa√ß√µes e dados de tr√°fego
 void processar_coleta_gerada (tipostring iface)
 {
 	tipostring linha;
@@ -94,16 +94,16 @@ void processar_coleta_gerada (tipostring iface)
 	FILE *in_handler;
 
 
-	// Captura os dados j· coletados e zera para a nova coleta iniciar imediatamente, nenhum byte È perdido neste modelo
+	// Captura os dados j√° coletados e zera para a nova coleta iniciar imediatamente, nenhum byte √© perdido neste modelo
 	sprintf(comando, "%s -s -p /tmp/collect.pipe.%s -e | grep -v SRC | grep -v total | \
 		grep -v INFO | grep -v OK", pmacct_bin, iface);
-//printf("LanÁando pmacct - %s\n", comando);
+//printf("Lan√ßando pmacct - %s\n", comando);
 	in_handler = rpopen(comando, "r");
 	if (in_handler)
 	{
-		while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Captura as estatÌsticas
+		while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Captura as estat√≠sticas
 		{
-			// N„o processa a linha final do pmacct, uma linha em branco...
+			// N√£o processa a linha final do pmacct, uma linha em branco...
 			if (linha[0] !=  '\n')
 			{
 				// Incrementa o contador dos registros nos logs (com repeticao)
@@ -113,17 +113,17 @@ void processar_coleta_gerada (tipostring iface)
 				// Captura os dados vindos do rpopen
 				sscanf(linha, "%s %s %ld %ld", ip_src, ip_dst, &packets, &bytes);
 
-				// Antes de adicionar o registro na ·rvore deve-se verificar se o IP pertence a uma das redes definidas em netactuator.conf
+				// Antes de adicionar o registro na √°rvore deve-se verificar se o IP pertence a uma das redes definidas em netactuator.conf
 				if (is_network_defined(ip_src))
 				{
-					// Quando o IP È source ele fez UPLOAD
+					// Quando o IP √© source ele fez UPLOAD
 					ip_sent_f = packets;
 					ip_sent_b = bytes;
 					adicionar_registro_arvore(ip_src, 0, 0, ip_sent_f, ip_sent_b, iface);
 				}
 				if (is_network_defined(ip_dst))
 				{
-					// Quando o IP È destin ele fez DOWNLOAD
+					// Quando o IP √© destin ele fez DOWNLOAD
 					ip_recv_f = packets;
 					ip_recv_b = bytes;
 					adicionar_registro_arvore(ip_dst, ip_recv_f, ip_recv_b, 0, 0, iface);

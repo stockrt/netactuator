@@ -12,12 +12,12 @@ INST_DEST_WEB=/usr/local/netactuator
 default:
 	@echo
 
-	@echo "As opÁıes para make s„o:"
+	@echo "As op√ß√µes para make s√£o:"
 	@echo
 	@echo "build/all	-> Compila o netactuator"
-	@echo "instalar	-> Instala o netactuator (depois de compilado). Bin·rio e interface Web"
+	@echo "instalar	-> Instala o netactuator (depois de compilado). Bin√°rio e interface Web"
 	@echo "desinstalar	-> Desinstala o netactuator"
-	@echo "clean		-> Limpa o workdir e remove o bin·rio gerado do diretÛrio atual"
+	@echo "clean		-> Limpa o workdir e remove o bin√°rio gerado do diret√≥rio atual"
 	@echo
 
 build: all
@@ -54,7 +54,7 @@ instalar:
 	@echo "Pronto"
 	@echo
 
-	@echo "Fixando permissıes de $(INST_DEST)/$(MAIN_OUTPUT)"
+	@echo "Fixando permiss√µes de $(INST_DEST)/$(MAIN_OUTPUT)"
 	@chmod 555 $(INST_DEST)/$(MAIN_OUTPUT)
 	@sleep 1
 	@echo "Pronto"
@@ -63,10 +63,10 @@ instalar:
 	@echo
 	@echo "**********************************************************************************************************"
 	@echo
-	@echo "- Ajuste as configuraÁıes de netactuator.conf:"
+	@echo "- Ajuste as configura√ß√µes de netactuator.conf:"
 	@echo "   # cp $(INST_DEST_CONF)/$(CONFIG_FILE) $(INST_DEST_CONF)/netactuator.conf"
 	@echo
-	@echo "- Utilize o script de inicializaÁ„o do banco de dados para comeÁar a usar o netactuator:"
+	@echo "- Utilize o script de inicializa√ß√£o do banco de dados para come√ßar a usar o netactuator:"
 	@echo "   # mysql < sql/netactuator-mysql.sql"
 	@echo
 	@echo "- Ajuste o seu httpd.conf:"
@@ -81,7 +81,7 @@ instalar:
 	@echo "- Ou utilize o arquivo fornecido:"
 	@echo "   # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf"
 	@echo
-	@echo "- Altere os seguintes par‚metros no php.ini:"
+	@echo "- Altere os seguintes par√¢metros no php.ini:"
 	@echo "   output_buffering = On"
 	@echo "   variables_order = \"EGPCS\""
 	@echo "   register_globals = On"
@@ -103,8 +103,8 @@ desinstalar:
 	@echo
 	@echo "**********************************************************************************************************"
 	@echo
-	@echo "Os arquivos de configuraÁ„o ser„o mantidos em \"$(INST_DEST_CONF)\"."
-	@echo "O diretÛrio \"$(INST_DEST_WEB)\" foi mantido com suas bases histÛricas, remova-o manualmente, se desejar."
+	@echo "Os arquivos de configura√ß√£o ser√£o mantidos em \"$(INST_DEST_CONF)\"."
+	@echo "O diret√≥rio \"$(INST_DEST_WEB)\" foi mantido com suas bases hist√≥ricas, remova-o manualmente, se desejar."
 	@echo
 	@echo "**********************************************************************************************************"
 	@echo
@@ -112,7 +112,7 @@ desinstalar:
 clean:
 	@echo
 
-	@echo "Removendo bin·rios e objetos locais de $(MAIN_OUTPUT) ..."
+	@echo "Removendo bin√°rios e objetos locais de $(MAIN_OUTPUT) ..."
 	@rm -f $(MAIN_OUTPUT)
 	@rm -f $(MAIN_OUTPUT).o
 	@rm -f $(MAIN_OUTPUT).core

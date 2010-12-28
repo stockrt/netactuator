@@ -17,7 +17,7 @@
  */
 
 
-// Verifica se um IP est· na lista de whitelisteds ou n„o
+// Verifica se um IP est√° na lista de whitelisteds ou n√£o
 int is_whitelisted (tipostring info)
 {
 	int i;
@@ -36,7 +36,7 @@ int is_whitelisted (tipostring info)
 }
 
 
-// Avisa aos contatos administrativos sobre a aÁ„o tomada pelo netactuator
+// Avisa aos contatos administrativos sobre a a√ß√£o tomada pelo netactuator
 void avisar_contatos_adm (SearchTree comeca, long baseline)
 {
 	int i;
@@ -47,7 +47,7 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
 
 	printf("Enviando e-mail...\n");
 
-	// Se n„o for whitelisted
+	// Se n√£o for whitelisted
 	if (!is_whitelisted(comeca->info))
 	{
 		strcpy(mail_temp_file, "/tmp/netactuator_mail_temp_file.txt");
@@ -56,7 +56,7 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
 		{
 			if (mail_handler = rfopen(mail_temp_file, "wt"))
 			{
-				fprintf(mail_handler, "Host \"%s\" com \"%ld\" conversaÁıes como origem foi bloqueado pelo netactuator.\n", comeca->info, comeca->convs_as_source);
+				fprintf(mail_handler, "Host \"%s\" com \"%ld\" conversa√ß√µes como origem foi bloqueado pelo netactuator.\n", comeca->info, comeca->convs_as_source);
 				fprintf(mail_handler, "Baseline: %ld\n", baseline);
 				fprintf(mail_handler, "Limite: %.0f\n\n", baseline * threshold);
 				fclose(mail_handler);
@@ -68,7 +68,7 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
 	}
 //	else
 //	{
-//		printf("Nada a ser feito, IP %s pertence ‡ WhiteList\n", comeca->info);
+//		printf("Nada a ser feito, IP %s pertence √† WhiteList\n", comeca->info);
 //	}
 
 	printf("\n");
@@ -87,7 +87,7 @@ int bloquear_host (tipostring info, int expire)
 
 //	printf("Aplicando regra de firewall...\n");
 
-	// Se n„o for whitelisted
+	// Se n√£o for whitelisted
 	if (!is_whitelisted(info))
 	{
 		if (is_ipfw)
@@ -98,7 +98,7 @@ int bloquear_host (tipostring info, int expire)
 		in_handler = rpopen(comando, "r");
 		if (in_handler)
 		{
-			while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Se tiver entradas para este IP em deny, n„o bloqueia novamente
+			while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Se tiver entradas para este IP em deny, n√£o bloqueia novamente
 				flag_bloqueado = 1;
 			pclose(in_handler);
 		}
@@ -120,14 +120,14 @@ int bloquear_host (tipostring info, int expire)
 	}
 //	else
 //	{
-//		printf("Nada a ser feito, IP %s pertence ‡ WhiteList\n", info);
+//		printf("Nada a ser feito, IP %s pertence √† WhiteList\n", info);
 //	}
 
 	return 0;
 }
 
 
-// Aplica a regra de liberaÁ„o no firewall
+// Aplica a regra de libera√ß√£o no firewall
 void desbloquear_host (tipostring info)
 {
 	FILE *in_handler;
@@ -136,7 +136,7 @@ void desbloquear_host (tipostring info)
 	int flag_bloqueado=0;
 
 
-//	printf("Aplicando regra de liberaÁ„o de firewall...\n");
+//	printf("Aplicando regra de libera√ß√£o de firewall...\n");
 
 	if (is_ipfw)
 		sprintf(comando, "%s list | grep \"deny ip from %s to any\"", fire_bin, info);
@@ -146,7 +146,7 @@ void desbloquear_host (tipostring info)
 	in_handler = rpopen(comando, "r");
 	if (in_handler)
 	{
-		while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Se tiver entradas para este IP em deny, n„o bloqueia novamente
+		while (fgets(linha, MAX_TAM_LINHA, in_handler)) // Se tiver entradas para este IP em deny, n√£o bloqueia novamente
 			flag_bloqueado = 1;
 		pclose(in_handler);
 	}

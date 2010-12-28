@@ -45,16 +45,16 @@ void rrd_create_rog (tipostring arquivo)
 	int week_rows;
 	int month_rows;
 	int year_rows;
-	float fator=2.0;	// Número de dias, semanas, meses e anos completos a manter
+	float fator=2.0;	// NÃºmero de dias, semanas, meses e anos completos a manter
 
 
 	sprintf(step, "-s %d", flow_capture_time_sec);
-	heartbeat = flow_capture_time_sec * 2;			// HB é maior do que step
+	heartbeat = flow_capture_time_sec * 2;			// HB Ã© maior do que step
 
-	day_steps = 1;						// Resolução máxima diária (valor exato a cada step segundos)
-	week_steps = (30.0 / flow_capture_time_sec * 60);	// Resolução de 30 minutos (média de 30 em 30 minutos, na consolidação)
-	month_steps = (120.0 / flow_capture_time_sec * 60);	// Resolução de 2 horas (média de 2 em 2 horas, na consolidação)
-	year_steps = (360.0 / flow_capture_time_sec * 60);	// Resolução de 6 horas (média de 6 em 6 horas, na consolidação)
+	day_steps = 1;						// ResoluÃ§Ã£o mÃ¡xima diÃ¡ria (valor exato a cada step segundos)
+	week_steps = (30.0 / flow_capture_time_sec * 60);	// ResoluÃ§Ã£o de 30 minutos (mÃ©dia de 30 em 30 minutos, na consolidaÃ§Ã£o)
+	month_steps = (120.0 / flow_capture_time_sec * 60);	// ResoluÃ§Ã£o de 2 horas (mÃ©dia de 2 em 2 horas, na consolidaÃ§Ã£o)
+	year_steps = (360.0 / flow_capture_time_sec * 60);	// ResoluÃ§Ã£o de 6 horas (mÃ©dia de 6 em 6 horas, na consolidaÃ§Ã£o)
 
 	day_rows = (fator * 86400 / flow_capture_time_sec);	// num rows para step segundos
 	week_rows = (fator * 100800 / flow_capture_time_sec);	// num rows para 30 minutos
@@ -181,7 +181,7 @@ printf("update: %s %s\n", arquivo, dados);
 }
 
 
-// Gera os gráficos para o ip passado
+// Gera os grÃ¡ficos para o ip passado
 //void rrd_graph_rog (int cod, tipostring host, long convs_as_source, long baseline)
 void rrd_graph_rog (int tip, int cod, tipostring host)
 {
@@ -310,7 +310,7 @@ fflush(stdout);
 			rrdmtime_comment,
 			NULL
 		};
-//			"VDEF:leitura_ativ_last=convs_source,LAST" - Hora/Data da última atividade
+//			"VDEF:leitura_ativ_last=convs_source,LAST" - Hora/Data da Ãºltima atividade
 //			"GPRINT:leitura_ativ_last:%c",
 
 		optind = opterr = 0; /* Because rrdtool uses getopt() */
@@ -406,8 +406,8 @@ fflush(stdout);
 			rrdmtime_comment,
 			NULL
 		};
-//			"VDEF:leitura_ativ_last=bytes_in,LAST" - Hora/Data da última atividade
-//			Imprimir AREA e LINE com bits para mostrar o "k" no gráfico
+//			"VDEF:leitura_ativ_last=bytes_in,LAST" - Hora/Data da Ãºltima atividade
+//			Imprimir AREA e LINE com bits para mostrar o "k" no grÃ¡fico
 //			Imprimir legendas em kbits para mostrar um valor mais inteligivel
 //			"GPRINT:leitura_ativ_last:%c",
 
@@ -416,7 +416,7 @@ fflush(stdout);
 		result = rrd_graph(51, params, &calcpr, &xsize, &ysize, NULL, &ymin, &ymax);
 	} // tip 1
 
-	// Liberar a memória
+	// Liberar a memÃ³ria
 	if (calcpr)
 	{
 		int i;
@@ -453,14 +453,14 @@ void rrd_rog (graph_t *graph)
 
 //printf("HOST %s -> %ld:%ld:%0.f\n", graph_local.info, graph_local.convs_as_source, graph_local.baseline, graph_local.baseline * threshold);
 	sprintf(arquivo, "%s/graph/%s_%d.rrd", base_www, graph_local.info, flow_capture_time_sec);
-	if (access(arquivo, F_OK)) // Se o arquivo .rrd não existir, cria.
+	if (access(arquivo, F_OK)) // Se o arquivo .rrd nÃ£o existir, cria.
 		rrd_create_rog(arquivo);
 
 	rrd_update_rog(arquivo, graph_local.convs_as_source, graph_local.convs_as_destin, graph_local.recv_f, graph_local.sent_f, graph_local.recv_b, graph_local.sent_b, graph_local.baseline);
 }
 
 
-// Gera os gráficos em thread, a cada intervalo regular de tempo
+// Gera os grÃ¡ficos em thread, a cada intervalo regular de tempo
 void graphing (void)
 {
 	MYSQL *conn=NULL;
@@ -470,7 +470,7 @@ void graphing (void)
 	tipostring query;
 	tipostring host;
 	time_t data_hora;
-	time_t data_hora_last=0;	// hora da última atualização
+	time_t data_hora_last=0;	// hora da Ãºltima atualizaÃ§Ã£o
 
 
 	while (1)
@@ -478,19 +478,19 @@ void graphing (void)
 		// Captura a data atual
 		time(&data_hora);
 
-		// 6 - ATUALIZAÇÃO DOS GRÁFICOS
+		// 6 - ATUALIZAÃ‡ÃƒO DOS GRÃFICOS
 		// Se a hora atual for maior que a anterior somada ao delay escolhido, update nos graphs
 		if (data_hora > data_hora_last + (graph_update_time_min * 60))
 		{
-			// Marca data da última atualização
-			// marcar logo no começo para que independentemente do tempo que levar para gerar os gráficos o software
-			// não leve mais do que graph_update_time_min entre um start e outro do graphing, exceto, é claro, quando o 
+			// Marca data da Ãºltima atualizaÃ§Ã£o
+			// marcar logo no comeÃ§o para que independentemente do tempo que levar para gerar os grÃ¡ficos o software
+			// nÃ£o leve mais do que graph_update_time_min entre um start e outro do graphing, exceto, Ã© claro, quando o 
 			// tempo de graphing for maior do que o tempo de graph_update_time_min.
 			time(&data_hora_last);
 inicial();
 			if ((conn = conectar()))
 			{
-				// Somente gera gráficos dos hosts que tiveram atividade dentro das últimas 3 execuções de coleta
+				// Somente gera grÃ¡ficos dos hosts que tiveram atividade dentro das Ãºltimas 3 execuÃ§Ãµes de coleta
 				sprintf(query, "SELECT host from (SELECT host,hora FROM %s WHERE data = '%s' GROUP BY host HAVING TIME_TO_SEC(TIMEDIFF(CURTIME(), MAX(hora))) <= %d AND TIME_TO_SEC(TIMEDIFF(CURTIME(), MAX(hora))) >= 0) as A;", MASS_T, data, flow_capture_time_sec * 3);
 //printf("Graph query: %s", query);
 
@@ -498,7 +498,7 @@ inicial();
 
 				while ((row = mysql_fetch_row(res)))
 				{
-					while (flag_limit_update) // enquanto estiver fazendo updates, dentro da checagem de limites, não gera gráficos
+					while (flag_limit_update) // enquanto estiver fazendo updates, dentro da checagem de limites, nÃ£o gera grÃ¡ficos
 					{
 						usleep(DELAY_MAIN);
 //printf("aguardando limit terminar..\n");

@@ -1,10 +1,10 @@
 USE mysql;
 
--- CriaÁ„o do usu·rio
+-- Cria√ß√£o do usu√°rio
 --REPLACE INTO user (host, user, password) VALUES ('%', 'netactuator', OLD_PASSWORD('netdbpass'));
 REPLACE INTO user (host, user, password) VALUES ('localhost', 'netactuator', OLD_PASSWORD('netdbpass'));
 
--- Permissıes de acesso do usu·rio
+-- Permiss√µes de acesso do usu√°rio
 --REPLACE INTO db (host, db, user, select_priv, insert_priv, update_priv, delete_priv, create_priv, drop_priv, index_priv)
 --	VALUES (
 --	'%',
@@ -20,14 +20,14 @@ REPLACE INTO db (host, db, user, select_priv, insert_priv, update_priv, delete_p
 	'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'
 );
 
--- Atualiza os privilÈgios dados
+-- Atualiza os privil√©gios dados
 FLUSH PRIVILEGES;
 
--- CriaÁ„o do banco de dados e conex„o com o banco
+-- Cria√ß√£o do banco de dados e conex√£o com o banco
 CREATE DATABASE IF NOT EXISTS netactuator;
 USE netactuator;
 
--- ConfiguraÁıes da ferramenta
+-- Configura√ß√µes da ferramenta
 DROP TABLE IF EXISTS config_netactuator;
 CREATE TABLE config_netactuator (
 	id			INT UNSIGNED NOT NULL auto_increment,
@@ -46,7 +46,7 @@ CREATE TABLE config_netactuator (
 --INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/ipfw', 15, '/usr/local/netactuator/web', 30, 90, 7, 300);
 INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/iptables', 15, '/usr/local/netactuator/web', 30, 90, 7, 300);
 
--- ConfiguraÁ„o das interfaces de rede a serem monitoradas
+-- Configura√ß√£o das interfaces de rede a serem monitoradas
 DROP TABLE IF EXISTS config_interfaces;
 CREATE TABLE config_interfaces (
 	id		INT UNSIGNED NOT NULL auto_increment,
@@ -64,7 +64,7 @@ INSERT INTO config_interfaces VALUES ('', 'vmnet8');
 INSERT INTO config_interfaces VALUES ('', 'lnc0');
 INSERT INTO config_interfaces VALUES ('', 'lo');
 
--- ConfiguraÁ„o das redes a serem avaliadas
+-- Configura√ß√£o das redes a serem avaliadas
 DROP TABLE IF EXISTS config_networks;
 CREATE TABLE config_networks (
 	id		INT UNSIGNED NOT NULL auto_increment,
@@ -79,7 +79,7 @@ INSERT INTO config_networks VALUES ('', '192.168.0.0/16');
 INSERT INTO config_networks VALUES ('', '189.0.0.0/8');
 INSERT INTO config_networks VALUES ('', '127.0.0.1/30');
 
--- ConfiguraÁ„o dos contatos administrativos
+-- Configura√ß√£o dos contatos administrativos
 DROP TABLE IF EXISTS config_admincontacts;
 CREATE TABLE config_admincontacts (
 	id		INT UNSIGNED NOT NULL auto_increment,
@@ -87,7 +87,7 @@ CREATE TABLE config_admincontacts (
 	email		TEXT NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO config_admincontacts VALUES ('', 'RogÈrio Schneider', 'stockrt@gmail.com');
+INSERT INTO config_admincontacts VALUES ('', 'Rog√©rio Schneider', 'stockrt@gmail.com');
 
 -- IPs sempre liberados
 DROP TABLE IF EXISTS net_whitelist;
@@ -111,7 +111,7 @@ CREATE TABLE net_blacklist (
 	PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- IPs com maior utilizaÁ„o de recurso
+-- IPs com maior utiliza√ß√£o de recurso
 DROP TABLE IF EXISTS net_topusers;
 CREATE TABLE net_topusers (
 	host			VARCHAR(15) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE storage_mass (
 	interface		VARCHAR(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Armazenamento dos padrıes definidos
+-- Armazenamento dos padr√µes definidos
 DROP TABLE IF EXISTS storage_pattern_def;
 CREATE TABLE storage_pattern_def (
 	host			VARCHAR(15) NOT NULL,
@@ -169,7 +169,7 @@ CREATE TABLE storage_eventos (
 	description		TEXT NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- ConfiguraÁ„o de visualizac„o/alteraÁ„o das tabelas pela interface gr·fica
+-- Configura√ß√£o de visualizac√£o/altera√ß√£o das tabelas pela interface gr√°fica
 DROP TABLE IF EXISTS config_tables;
 CREATE TABLE config_tables (
 	id		INT UNSIGNED NOT NULL auto_increment,
@@ -195,9 +195,9 @@ INSERT INTO config_tables VALUES ('', 'storage_pattern_def', 1, 0, 0, 0, 0, 'PAD
 INSERT INTO config_tables VALUES ('', 'storage_eventos', 1, 0, 0, 0, 0, 'EVENTOS');
 INSERT INTO config_tables VALUES ('', 'config_tables', 0, 0, 1, 1, 1, 'TABELAS');
 
--- Ajusta privilÈgios de acesso
+-- Ajusta privil√©gios de acesso
 --GRANT ALL PRIVILEGES ON netactuator.* TO 'netactuator'@'%';
 GRANT ALL PRIVILEGES ON netactuator.* TO 'netactuator'@'localhost';
 
--- Atualiza os privilÈgios concedidos
+-- Atualiza os privil√©gios concedidos
 FLUSH PRIVILEGES;

@@ -3,7 +3,7 @@ host activities and make individual host behavior patterns, acting
 directly with the firewall rules to block machines whose behavior
 steped out of the historic pattern of communication flow.
 
-Copyright (C) 2006, 2007, 2008  Rogério Schneider (stockrt@gmail.com)
+Copyright (C) 2006, 2007, 2008  RogÃ©rio Schneider (stockrt@gmail.com)
 
 netactuator is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

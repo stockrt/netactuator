@@ -5,39 +5,39 @@ Algumas coisas a fazer ainda...
 **
 - Sanity check no uso de mask /0.0.0.0 pois trava o netmask.c do paul_davis.
 - Coleta por SNMP.
-- Baseline maths (melhorar o c·lculo de baseline com um mÈtodo
-matem·tico mais aprimorado, n„o apenas uma mÈdia como ainda È o caso).
-- Bloquear definitivo apÛs 3 incidÍncias?
-- Montar tabela com ajuste autom·tico de espaÁamento para
-os gr·ficos. N„o raramente o cabeÁalho fica desalinhado.
-- Syslog e remover os redirects do scripts de inicializaÁ„o.
+- Baseline maths (melhorar o c√°lculo de baseline com um m√©todo
+matem√°tico mais aprimorado, n√£o apenas uma m√©dia como ainda √© o caso).
+- Bloquear definitivo ap√≥s 3 incid√™ncias?
+- Montar tabela com ajuste autom√°tico de espa√ßamento para
+os gr√°ficos. N√£o raramente o cabe√ßalho fica desalinhado.
+- Syslog e remover os redirects do scripts de inicializa√ß√£o.
 - Tratamento de sinais para gracefull exit.
-- Intervalo de geraÁ„o de gr·ficos deve ser removido
-de defs.h e colocado em configuraÁ„o no banco de dados, junto
-com as demais entradas de configuraÁ„o.
-- Logo que se inicia o aprendizado (7 dias por default) os gr·ficos
-de base ficam marcando todo o tr·fego como comprometido. Somente
-depois deste perÌodo È que se ter· gr·ficos com ·reas verdes. Isso
-poderia ser ajustado para ser considerado tr·fego normal atÈ que
-o perÌodo de aprendizado seja encerrado. Acho que isso se deve ao
-fato da baseline ser zero neste perÌodo, por isso tudo fica marcado
-como comprometido. Quem sabe um pouco mais de lÛgica com condicionais
+- Intervalo de gera√ß√£o de gr√°ficos deve ser removido
+de defs.h e colocado em configura√ß√£o no banco de dados, junto
+com as demais entradas de configura√ß√£o.
+- Logo que se inicia o aprendizado (7 dias por default) os gr√°ficos
+de base ficam marcando todo o tr√°fego como comprometido. Somente
+depois deste per√≠odo √© que se ter√° gr√°ficos com √°reas verdes. Isso
+poderia ser ajustado para ser considerado tr√°fego normal at√© que
+o per√≠odo de aprendizado seja encerrado. Acho que isso se deve ao
+fato da baseline ser zero neste per√≠odo, por isso tudo fica marcado
+como comprometido. Quem sabe um pouco mais de l√≥gica com condicionais
 no graph.c? Ver rrdgraph_rpn (1).
 - Revisar e eliminar memory-leaks.
-- timing.c: inicial() e final() usam vari·veis globais, e isso n„o
-est· certo!
-- No netmask.c existem chamadas para exit() ao n„o aceitar a m·scara
-usada. O range permitido È de 1 atÈ 30. Realizar sanity-check nas masks
-utilizadas e remover o exit() para que o daemon n„o morra por erro
-de configuraÁ„o do usu·rio.
+- timing.c: inicial() e final() usam vari√°veis globais, e isso n√£o
+est√° certo!
+- No netmask.c existem chamadas para exit() ao n√£o aceitar a m√°scara
+usada. O range permitido √© de 1 at√© 30. Realizar sanity-check nas masks
+utilizadas e remover o exit() para que o daemon n√£o morra por erro
+de configura√ß√£o do usu√°rio.
 
 **
 ** Web Interface
 **
 - Existem alguns warnings para o PHP que podem ser revisados,
-como acesso ‡ vari·veis n„o declaradas (em casos onde os condicionais
-evitam a inicializaÁ„o de uma vari·vel, que acaba sendo
-mesmo assim referenciada em outro ponto do cÛdigo).
+como acesso √† vari√°veis n√£o declaradas (em casos onde os condicionais
+evitam a inicializa√ß√£o de uma vari√°vel, que acaba sendo
+mesmo assim referenciada em outro ponto do c√≥digo).
 - connect.php deve trazer os dados do netactuator.conf.
 
 **
@@ -57,5 +57,5 @@ Project Home: http://netactuator.googlecode.com
 Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
 Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
 
-Author: RogÈrio Schneider (stockrt@gmail.com)
+Author: Rog√©rio Schneider (stockrt@gmail.com)
 http://stockrtweb.homelinux.com

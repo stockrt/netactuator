@@ -138,7 +138,7 @@ SeqList criar_lista (int nodos)
 	// Cria os nodos seguintes da lista
 	for(i=0; i<nodos; i++)
 	{
-		// Percorre a lista até o seu fim e insere um nodo nodo
+		// Percorre a lista atÃ© o seu fim e insere um nodo nodo
 		atual = list;
 		while (atual->p)
 			atual = atual->p;

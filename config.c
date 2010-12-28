@@ -82,7 +82,7 @@ int sep_arg_vet (char *arg[MAX_ARGS], char *inputstring, tipostring regexp)
 }
 
 
-// Mostra as configurações carregadas na tela
+// Mostra as configuraÃ§Ãµes carregadas na tela
 void mostrar_configuracoes (void)
 {
 	int i=0;
@@ -167,7 +167,7 @@ void mostrar_configuracoes (void)
 }
 
 
-// Carrega as configurações do arquivo para as variáveis globais
+// Carrega as configuraÃ§Ãµes do arquivo para as variÃ¡veis globais
 //void carregar_configuracoes (FILE *in_handler)
 void carregar_configuracoes (tipostring arquivo)
 {
@@ -214,7 +214,7 @@ void carregar_configuracoes (tipostring arquivo)
 
 //	while (1)
 //	{
-		flag_loading_config = 1; // carregando configurações, bloqueia outros acessos
+		flag_loading_config = 1; // carregando configuraÃ§Ãµes, bloqueia outros acessos
 
 		if ((conn = conectar()))
 		{
@@ -233,13 +233,13 @@ void carregar_configuracoes (tipostring arquivo)
 			res = sql(query, conn);
 			while ((row = mysql_fetch_row(res)))
 			{
-				// Rede/Máscara
+				// Rede/MÃ¡scara
 				sep_arg_vet(net_argum_temp, row[0], "/");
 				strcpy(networks[num_networks][0], net_argum_temp[0]);
 				strcpy(networks[num_networks][1], net_argum_temp[1]);
 				num_networks++;
 			}
-			// Carrega os valores de ip_range para networks_ranges usando a função netmask() de Paul Davis, modificada por mim.
+			// Carrega os valores de ip_range para networks_ranges usando a funÃ§Ã£o netmask() de Paul Davis, modificada por mim.
 			if (num_networks)
 				netmask_paul_davis();
 
@@ -251,7 +251,7 @@ void carregar_configuracoes (tipostring arquivo)
 				flow_capture_time_min = atoi(row[0]);
 				if (flow_capture_time_min < 1 || flow_capture_time_min > 10)
 				{
-					printf("Valor de flow_capture_time=%d está fora do intervalo permitido\n", flow_capture_time_min);
+					printf("Valor de flow_capture_time=%d estÃ¡ fora do intervalo permitido\n", flow_capture_time_min);
 				}
 				flow_capture_time_sec = flow_capture_time_min * 60; // transforma os minutos em segundos
 
@@ -302,8 +302,8 @@ void carregar_configuracoes (tipostring arquivo)
 			desconectar(conn);
 		} // if conn
 
-		// Sinaliza ao main que já pode prosseguir (banco ok, configs ok)
-		flag_loading_config = 0; // configurações carregadas, libera outros acessos
+		// Sinaliza ao main que jÃ¡ pode prosseguir (banco ok, configs ok)
+		flag_loading_config = 0; // configuraÃ§Ãµes carregadas, libera outros acessos
 		//mostrar_configuracoes();
 //		sleep(DELAY_LEITURA_CONFIGS);
 //	} // while not the end of the world

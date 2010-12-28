@@ -38,7 +38,7 @@ void inserir_blacklist (tipostring host, int expire)
 		time_bloqueio = data_hora;
 		expire_time = time_bloqueio + (block_time_min * 60);
 
-		// SÛ insere se vir com 1, casos autom·ticos, n„o via web
+		// S√≥ insere se vir com 1, casos autom√°ticos, n√£o via web
 		if (expire)
 		{
 			sprintf(query, "INSERT INTO %s (host,time_bloqueio,expire_time,description) VALUES('%s', '%ld', '%ld', 'Bloqueado pelo netactuator');", BLACKLIST_T, host, time_bloqueio, expire_time);
@@ -70,7 +70,7 @@ void remover_blacklist (tipostring host)
 }
 
 
-// Monitora os expire times dos bloqueios (flutuaÁ„o) e faz bloqueios da web
+// Monitora os expire times dos bloqueios (flutua√ß√£o) e faz bloqueios da web
 void on_the_fly (void)
 {
 	MYSQL *conn=NULL;
@@ -110,7 +110,7 @@ void on_the_fly (void)
 				}
 				else
 				{
-					bloquear_host(host, 0); // Ser· testado se j· est· ou n„o bloqueado
+					bloquear_host(host, 0); // Ser√° testado se j√° est√° ou n√£o bloqueado
 				}
 			}
 
@@ -125,13 +125,13 @@ void on_the_fly (void)
 			{
 				while (fgets(linha, MAX_TAM_LINHA, in_handler))
 				{
-					flag_consta = 0; // para cada host, zerar a marcaÁ„o e verificar na tabela
+					flag_consta = 0; // para cada host, zerar a marca√ß√£o e verificar na tabela
 					linha[strlen(linha)-1] = '\0';	// remove o \n do fim da string
 					sprintf(query, "SELECT * FROM %s WHERE host = '%s';", BLACKLIST_T, linha);
 //printf("q: %s\n", query);
 					res = sql(query, conn);
 
-					// Verifica se o host consta como bloqueado, caso contr·rio o libera (foi liberado pela web)
+					// Verifica se o host consta como bloqueado, caso contr√°rio o libera (foi liberado pela web)
 					if ((row = mysql_fetch_row(res)))
 						flag_consta = 1;
 					mysql_free_result(res);

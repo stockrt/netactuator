@@ -1,15 +1,15 @@
 <?php 
 $diasemana[0] = "Domingo"; 
 $diasemana[1] = "Segunda-feira"; 
-$diasemana[2] = "Terça-feira"; 
+$diasemana[2] = "TerÃ§a-feira"; 
 $diasemana[3] = "Quarta-feira"; 
 $diasemana[4] = "Quinta-feira"; 
 $diasemana[5] = "Sexta-feira"; 
-$diasemana[6] = "Sábado"; 
+$diasemana[6] = "SÃ¡bado"; 
 
 $mesnome[1] = "janeiro"; 
 $mesnome[2] = "fevereiro"; 
-$mesnome[3] = "março"; 
+$mesnome[3] = "marÃ§o"; 
 $mesnome[4] = "abril"; 
 $mesnome[5] = "maio"; 
 $mesnome[6] = "junho"; 

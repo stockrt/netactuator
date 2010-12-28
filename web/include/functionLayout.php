@@ -84,7 +84,7 @@ function formGraphics() {
 	print"
 		<tr>
 			<td bordercolor='#000000'><strong>
-				&nbsp;&nbsp; <a href='graficos.php'>Gr·ficos</a>
+				&nbsp;&nbsp; <a href='graficos.php'>Gr√°ficos</a>
 			</strong></td>
 		</tr>
 	";
@@ -155,7 +155,7 @@ function formInsertDados($tb, $field) {
 function poweredby() {
 	print"<br>
 		<p class='style1small'>
-			netactuator by RogÈrio Schneider <br>
+			netactuator by Rog√©rio Schneider <br>
 			Interface Web by Lucas Schneider
 		</p>
 	";

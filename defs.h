@@ -25,11 +25,11 @@
 
 // Intervalo entre cada leitura das configs do banco
 #define DELAY_LEITURA_CONFIGS	20
-// Intervalo entre cada verificaÁ„o de hora para update do pattern
+// Intervalo entre cada verifica√ß√£o de hora para update do pattern
 #define DELAY_UPDATE	60
-// Pausa entre uma verificaÁ„o de expire time de host bloqueado e outra
+// Pausa entre uma verifica√ß√£o de expire time de host bloqueado e outra
 #define DELAY_EXPIRE	40
-// Intervalo entre iteraÁıes do laÁo principal
+// Intervalo entre itera√ß√µes do la√ßo principal
 // 2 s = 20 = ds = 200 cs = 2000 ms = 20000 = ?s = 200000 ?s = 2000000 us -> Usando 20 ms = 20000 us
 #define DELAY_MAIN	20000
 
@@ -38,7 +38,7 @@
 #define FLAG_CLEAN	1
 #define FLAG_DIRTY	0
 
-// N˙mero de tentativas de conex„o com o MySQL antes de desistir
+// N√∫mero de tentativas de conex√£o com o MySQL antes de desistir
 #define NUM_DB_TRY	5
 
 // Tabelas
@@ -66,7 +66,7 @@ time_t ini, end;				// marcadores de tempo de execucao
 long count_log=0;				// contador de registros nos logs, com repeticao
 
 
-// ¡rvore
+// √Årvore
 struct TreeNode;
 typedef struct TreeNode *SearchTree;
 
@@ -130,16 +130,16 @@ struct graph_data
 
 
 
-// ConfiguraÁıes
-int flag_loading_config=1;	// inicia carregando configuraÁıes
-int flag_limit_update=0;	// bloqueia geraÁ„o de gr·ficos durante o limit (update rrd, evita acessos m˙ltiplos aos rrds)
+// Configura√ß√µes
+int flag_loading_config=1;	// inicia carregando configura√ß√µes
+int flag_limit_update=0;	// bloqueia gera√ß√£o de gr√°ficos durante o limit (update rrd, evita acessos m√∫ltiplos aos rrds)
 
 tipostring interfaces[MAX_ARGS];
 int num_interfaces=0;
 
-tipostring networks[MAX_ARGS][2]; // campo 0 = rede, campo 1 = m·scara
+tipostring networks[MAX_ARGS][2]; // campo 0 = rede, campo 1 = m√°scara
 int num_networks=0;
-unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = ip_final, campo 2 = maskbits (inseridos somente na funÁ„o netmask_paul_davis())
+unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = ip_final, campo 2 = maskbits (inseridos somente na fun√ß√£o netmask_paul_davis())
 
 int flow_capture_time_min=0;
 int flow_capture_time_sec=0;
