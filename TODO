@@ -1,0 +1,61 @@
+Algumas coisas a fazer ainda...
+
+**
+** Daemon
+**
+- Sanity check no uso de mask /0.0.0.0 pois trava o netmask.c do paul_davis.
+- Coleta por SNMP.
+- Baseline maths (melhorar o cálculo de baseline com um método
+matemático mais aprimorado, não apenas uma média como ainda é o caso).
+- Bloquear definitivo após 3 incidências?
+- Montar tabela com ajuste automático de espaçamento para
+os gráficos. Não raramente o cabeçalho fica desalinhado.
+- Syslog e remover os redirects do scripts de inicialização.
+- Tratamento de sinais para gracefull exit.
+- Intervalo de geração de gráficos deve ser removido
+de defs.h e colocado em configuração no banco de dados, junto
+com as demais entradas de configuração.
+- Logo que se inicia o aprendizado (7 dias por default) os gráficos
+de base ficam marcando todo o tráfego como comprometido. Somente
+depois deste período é que se terá gráficos com áreas verdes. Isso
+poderia ser ajustado para ser considerado tráfego normal até que
+o período de aprendizado seja encerrado. Acho que isso se deve ao
+fato da baseline ser zero neste período, por isso tudo fica marcado
+como comprometido. Quem sabe um pouco mais de lógica com condicionais
+no graph.c? Ver rrdgraph_rpn (1).
+- Revisar e eliminar memory-leaks.
+- timing.c: inicial() e final() usam variáveis globais, e isso não
+está certo!
+- No netmask.c existem chamadas para exit() ao não aceitar a máscara
+usada. O range permitido é de 1 até 30. Realizar sanity-check nas masks
+utilizadas e remover o exit() para que o daemon não morra por erro
+de configuração do usuário.
+
+**
+** Web Interface
+**
+- Existem alguns warnings para o PHP que podem ser revisados,
+como acesso à variáveis não declaradas (em casos onde os condicionais
+evitam a inicialização de uma variável, que acaba sendo
+mesmo assim referenciada em outro ponto do código).
+- connect.php deve trazer os dados do netactuator.conf.
+
+**
+** Extra
+**
+- Perhaps translate all the comments and texts to English to make
+it more world wide?
+
+
+netactuator on Web:
+Home: http://stockrtweb.homelinux.com/netactuator
+Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
+Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
+
+netactuator on Google Code:
+Project Home: http://netactuator.googlecode.com
+Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
+Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
+
+Author: Rogério Schneider (stockrt@gmail.com)
+http://stockrtweb.homelinux.com

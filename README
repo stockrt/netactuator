@@ -1,0 +1,30 @@
+netactuator is an active network management tool, for graphing individual
+host activities and make individual host behavior patterns, acting
+directly with the firewall rules to block machines whose behavior
+steped out of the historic pattern of communication flow.
+
+netactuator é uma ferramenta de gerência ativa de redes, que gera gráficos
+individuais de atividade por host e avalia individualmente o comportamento
+dos hosts de uma rede, atuando diretamente no firewall para bloquear as
+máquinas que venham a sair do seu padrão histórico de fluxo comunicação.
+
+- O netactuator pode gerar gráficos web de utilização de recursos, tais como conexões originadas e tráfego de dados in/out por host na rede.
+- É possível visualizar os Top Users da rede nos últimos N minutos de coleta, ordenandos por bytes, pacotes e conexões in/out.
+- O sistema envia alertas por e-mail quando um evento novo ocorre (máquina bloqueada na rede) e registra em log outros eventos.
+- As regras do firewall são "flutuadas" pelo netactuator, mantendo as máquinas bloqueadas por pequenos periodos e depois as liberando.
+- Hosts podem ser bloqueados/liberados no firewall a qualquer momento, via interface web do netactuator.
+- Toda a configuração e gerência da ferramenta é feita pela web.
+
+
+netactuator on Web:
+Home: http://stockrtweb.homelinux.com/netactuator
+Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
+Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
+
+netactuator on Google Code:
+Project Home: http://netactuator.googlecode.com
+Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
+Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
+
+Author: Rogério Schneider (stockrt@gmail.com)
+http://stockrtweb.homelinux.com

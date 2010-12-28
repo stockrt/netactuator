@@ -1,0 +1,12 @@
+#
+# Esta é a configuração do netactuator para ser acessado pelo Apache.
+#
+
+Alias /netactuator /usr/local/netactuator/web
+<Directory /usr/local/netactuator/web>
+	AddDefaultCharset ISO-8859-1
+	Options None
+	AllowOverride None
+	Order deny,allow
+	Allow from all
+</Directory>

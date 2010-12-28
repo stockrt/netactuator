@@ -1,0 +1,234 @@
+Passos a serem executados para a compilação e instalação do netactuator.
+
+
+netactuator on Web:
+Home: http://stockrtweb.homelinux.com/netactuator
+Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
+Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
+
+netactuator on Google Code:
+Project Home: http://netactuator.googlecode.com
+Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
+Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
+
+Author: Rogério Schneider (stockrt@gmail.com)
+http://stockrtweb.homelinux.com
+
+
+################################################################################################################
+# FreeBSD                                                                                                      #
+################################################################################################################
+
+# MySQL 5 (binários e headers)
+cd /usr/ports/databases/mysql50-client
+make install
+cd /usr/ports/databases/mysql50-server
+make install
+cd /usr/ports/databases/mysql50-scripts
+make install
+
+# Apache 1 ou 2
+cd /usr/ports/www/apache{13,20,21,22}
+make install
+
+# PHP 4 ou PHP 5
+cd /usr/ports/lang/php{4,5}
+make install
+
+# PHP com suporte a MySQL
+cd /usr/ports/databases/php{4,5}-mysql
+make install
+
+# pmacct
+cd /usr/ports/net-mgmt/pmacct
+make install
+
+# RRDTool (binários e headers)
+cd /usr/ports/net/rrdtool
+make install
+
+# Alguns links precisam ser criados para a correta compilação do netactuator:
+
+# Att! Não linkar nada antes de ter o php e php-mysql instalados !!! Isso gera erro de
+# compilação em:
+## checking for mysql_close in -lmysqlclient... no
+## checking for mysql_error in -lmysqlclient... no
+
+# O netactuator busca essa biblioteca do MySQL no diretório /usr/local/lib:
+cd /usr/local/lib
+ln -s mysql/libmysqlclient.so.15.0.0
+
+# Headers para compilação
+cd /usr/include
+ln -s /usr/local/include/mysql
+ln -s /usr/local/include/rrd.h
+
+ldconfig
+
+# Se depois de linkar precisar instalar ou atualizar suportes ao MySQL, remova os links criados acima, instale/atualize os suportes ao 
+# MySQL, e depois refaça os links.
+
+Depois destes passos o netactuator pode ser compilado e instalado no sistema.
+
+################################################################################################################
+# FreeBSD                                                                                                      #
+################################################################################################################
+
+
+################################################################################################################
+# Fedora Linux                                                                                                 #
+################################################################################################################
+
+# Apache
+yum -y install httpd
+
+# PHP 5
+yum -y install php
+
+# MySQL 5
+yum -y install mysql-server
+yum -y install mysql mysql-devel mysql-libs
+
+# RRD
+yum -y install rrdtool rrdtool-devel
+
+# LIBPCAP Headers
+yum -y install libpcap-devel
+
+# pmacct
+http://www.pmacct.net/
+pmacct-0.11.5.tar.gz ou mais novo
+
+wget http://www.pmacct.net/pmacct-0.11.5.tar.gz
+tar xzvf pmacct-0.11.5.tar.gz
+cd pmacct-0.11.5
+./configure
+make
+make install
+
+A versão mencionada já se encontra em 'misc'.
+
+Depois destes passos o netactuator pode ser compilado e instalado no sistema.
+
+################################################################################################################
+# Fedora Linux                                                                                                 #
+################################################################################################################
+
+
+################################################################################################################
+# Kurumin Linux / Debian Linux                                                                                 #
+################################################################################################################
+
+# MySQL 5 (binários)
+apt-get install mysql-client
+apt-get install mysql-server
+apt-get install mysql-common
+
+# MySQL 5 (headers)
+apt-get install libmysqlclient15-dev (mysql.h e mysql_config)
+
+# Apache 2
+apt-get install apache
+
+# PHP 4 ou PHP 5
+apt-get install php{4,5}
+
+# PHP com suporte a MySQL
+apt-get install php{4,5}-mysql
+
+# pmacct
+apt-get install pmacct
+
+# RRDTool (binários)
+apt-get install rrdtool
+
+# RRDTool (headers)
+apt-get install librrd2
+apt-get install librrd2-dev
+
+Depois destes passos o netactuator pode ser compilado e instalado no sistema.
+
+################################################################################################################
+# Kurumin Linux / Debian Linux                                                                                 #
+################################################################################################################
+
+
+################################################################################################################
+# SuSE Linux                                                                                                   #
+################################################################################################################
+
+Fazer o download de:
+
+# Mysql 5.0 Client:
+wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-client-standard-5.0.26-0.sles9.i586.rpm/from/http://www.linorg.usp.br/mysql/
+# MySql 5.0 Server:
+wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-server-standard-5.0.26-0.sles9.i586.rpm/from/http://www.linorg.usp.br/mysql/
+# MySql 5.0 - Headers and libraries:
+wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-devel-standard-5.0.26-0.sles9.i586.rpm/from/http://www.linorg.usp.br/mysql/
+
+# Instalar os programas baixados:
+rpm -ivh MySQL-server-standard-5.0.26-0.sles9.i586.rpm MySQL-client-standard-5.0.26-0.sles9.i586.rpm MySQL-devel-standard-5.0.26-0.sles9.i586.rpm
+
+Instalar pelo YAST:
+- Apache 2
+- Php 5
+- Php 5 MySQL
+- RRDTool 1.2.11
+
+# Instalar o pmacct:
+wget ftp://ftp.suntel.com.tr/pub/repo/monitoring/SUSE_Factory/i586/pmacct-0.11.0-15.1.i586.rpm
+rpm -ivh pmacct-0.11.0-15.1.i586.rpm
+
+# O netactuator busca essa biblioteca do MySQL no diretório /usr/local/lib:
+cd /usr/local/lib
+ln -s /usr/lib/libmysqlclient.so.15.0.0
+ldconfig
+
+################################################################################################################
+# SuSE Linux                                                                                                   #
+################################################################################################################
+
+
+################################################################################################################
+# Para todos os sistemas                                                                                       #
+################################################################################################################
+
+   # tar xzvf netactuator.tar.gz
+   # cd netactuator
+   # make all
+   # make instalar
+
+**********************************************************************************************************
+
+- Ajuste as configurações de netactuator.conf:
+   # cp /usr/local/etc/netactuator/netactuator.conf-dist /usr/local/etc/netactuator/netactuator.conf
+
+- Utilize o script de inicialização do banco de dados para começar a usar o netactuator:
+   # mysql < sql/netactuator-mysql.sql
+
+- Ajuste o seu httpd.conf:
+   Alias /netactuator /usr/local/netactuator/web
+   <Directory /usr/local/netactuator/web>
+       AddDefaultCharset ISO-8859-1
+       Options None
+       AllowOverride None
+       Order deny,allow
+       Allow from all
+   </Directory>
+- Ou utilize o arquivo fornecido:
+   # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf
+
+- Altere os seguintes parâmetros no php.ini:
+   output_buffering = On
+   variables_order = "EGPCS"
+   register_globals = On
+   session.auto_start = 1
+
+- Utilize o script de start/stop/status do netactuator:
+   # ./scripts/netactuator.sh
+
+**********************************************************************************************************
+
+################################################################################################################
+# Para todos os sistemas                                                                                       #
+################################################################################################################

@@ -1,0 +1,19 @@
+#
+# Arquivo de configuração do netactuator.
+#
+
+## Utilize o script de inicialização do banco para poder usar o netactuator ##
+
+## Database ##
+
+# Database Host
+db_host=localhost
+
+# Database User
+db_user=netactuator
+
+# Database Password
+db_password=netdbpass
+
+# Database Name
+db_name=netactuator
