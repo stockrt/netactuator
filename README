@@ -3,28 +3,20 @@ host activities and make individual host behavior patterns, acting
 directly with the firewall rules to block machines whose behavior
 steped out of the historic pattern of communication flow.
 
-netactuator È uma ferramenta de gerÍncia ativa de redes, que gera gr·ficos
+netactuator √© uma ferramenta de ger√™ncia ativa de redes, que gera gr√°ficos
 individuais de atividade por host e avalia individualmente o comportamento
 dos hosts de uma rede, atuando diretamente no firewall para bloquear as
-m·quinas que venham a sair do seu padr„o histÛrico de fluxo comunicaÁ„o.
+m√°quinas que venham a sair do seu padr√£o hist√≥rico de fluxo comunica√ß√£o.
 
-- O netactuator pode gerar gr·ficos web de utilizaÁ„o de recursos, tais como conexıes originadas e tr·fego de dados in/out por host na rede.
-- … possÌvel visualizar os Top Users da rede nos ˙ltimos N minutos de coleta, ordenandos por bytes, pacotes e conexıes in/out.
-- O sistema envia alertas por e-mail quando um evento novo ocorre (m·quina bloqueada na rede) e registra em log outros eventos.
-- As regras do firewall s„o "flutuadas" pelo netactuator, mantendo as m·quinas bloqueadas por pequenos periodos e depois as liberando.
+- O netactuator pode gerar gr√°ficos web de utiliza√ß√£o de recursos, tais como conex√µes originadas e tr√°fego de dados in/out por host na rede.
+- √â poss√≠vel visualizar os Top Users da rede nos √∫ltimos N minutos de coleta, ordenandos por bytes, pacotes e conex√µes in/out.
+- O sistema envia alertas por e-mail quando um evento novo ocorre (m√°quina bloqueada na rede) e registra em log outros eventos.
+- As regras do firewall s√£o "flutuadas" pelo netactuator, mantendo as m√°quinas bloqueadas por pequenos periodos e depois as liberando.
 - Hosts podem ser bloqueados/liberados no firewall a qualquer momento, via interface web do netactuator.
-- Toda a configuraÁ„o e gerÍncia da ferramenta È feita pela web.
-
-
-netactuator on Web:
-Home: http://stockrtweb.homelinux.com/netactuator
-Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
-Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
+- Toda a configura√ß√£o e ger√™ncia da ferramenta √© feita pela web.
 
 netactuator on Google Code:
 Project Home: http://netactuator.googlecode.com
-Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
-Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
 
-Author: RogÈrio Schneider (stockrt@gmail.com)
-http://stockrtweb.homelinux.com
+Author: Rog√©rio Schneider (stockrt@gmail.com)
+http://stockrt.github.com
