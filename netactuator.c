@@ -82,7 +82,7 @@ int fork2 (void)
 
 int main (int argc, char *argv[])
 {
-    int i=0;            // contador padr„o
+    int i=0;            // contador padr√£o
     int erro=0;         // flag que indica se foi executado da forma correta na linha de comando
     char *in_opt=NULL;  // input file name
     FILE *in_handler;   // pointer to input file
@@ -101,7 +101,7 @@ int main (int argc, char *argv[])
     sprintf(hora, "%d:%d:%d", sdata->tm_hour, sdata->tm_min, sdata->tm_sec);
     sprintf(week_day, "%d", sdata->tm_wday);
 
-    // Aponta para o local padr„o do arquivo de configuraÁ„o
+    // Aponta para o local padr√£o do arquivo de configura√ß√£o
     in_opt = "/usr/local/etc/netactuator/netactuator.conf";
 
     // Arquivo de input e output
@@ -115,10 +115,10 @@ int main (int argc, char *argv[])
                 break;
 
             case 'v':
-                // Mostra a vers„o
+                // Mostra a vers√£o
                 printf("\n");
                 printf("netactuator version is: 1.0\n");
-                // N„o tem break pois leva ao usage
+                // N√£o tem break pois leva ao usage
 
             case '?':
             case 'h':
@@ -130,7 +130,7 @@ int main (int argc, char *argv[])
     if (in_opt == NULL)
         erro = usage(argv[0]);
 
-    // Se n„o houve erro, continua com a execuÁ„o
+    // Se n√£o houve erro, continua com a execu√ß√£o
     if (!erro)
     {
         // Coloca o processo em modo background / detach from console
@@ -144,9 +144,9 @@ int main (int argc, char *argv[])
 
             carregar_configuracoes(in_opt);
 
-            // Aguarda atÈ a thread carregar todas as configs
+            // Aguarda at√© a thread carregar todas as configs
             printf("Inicializando o netactuator...\n");
-            while (flag_loading_config) // enquanto carregando configuraÁıes, aguarda
+            while (flag_loading_config) // enquanto carregando configura√ß√µes, aguarda
             {
                 printf("Aguardando as configs..\n");
                 usleep(DELAY_MAIN);
@@ -168,8 +168,8 @@ Passos:
 
 2 - Agrupa dados
 
-3 - Checa limites e armazena no banco (usando flags de clean e dirty) e gera gr·ficos
-3.1 - Gera Gr·ficos
+3 - Checa limites e armazena no banco (usando flags de clean e dirty) e gera gr√°ficos
+3.1 - Gera Gr√°ficos
 
 4 - Toma acao (block, mail)
 
@@ -190,7 +190,7 @@ Passos:
             // 1 - COLETA
             // 1 - SENSOR
 
-            // Certifica-se de que nenhuma inst‚ncia anterior do pmacctd esteja sendo executada
+            // Certifica-se de que nenhuma inst√¢ncia anterior do pmacctd esteja sendo executada
             system("kill -9 $(cat /var/run/pmacctd.pid*) > /dev/null 2>&1");
             system("killall pmacctd > /dev/null 2>&1");
             sleep(3);
@@ -201,25 +201,25 @@ Passos:
             // Executa o pmacctd para coleta de dados
             for(i=0; i<num_interfaces; i++)
             {
-//printf("LanÁando pmacctd %s\n", interfaces[i]);
+//printf("Lan√ßando pmacctd %s\n", interfaces[i]);
                 pmacctd_wrapper(interfaces[i]);
 //fflush(stdout);
             }
 
 
 
-            // LaÁo de monitoraÁ„o da rede
+            // La√ßo de monitora√ß√£o da rede
             while (1)
             {
                 // Captura a data atual
                 time(&data_hora_atual);
 
-                // Se o tempo de captura chegou no seu limite e se n„o est· relendo as configs
+                // Se o tempo de captura chegou no seu limite e se n√£o est√° relendo as configs
                 if (data_hora_atual >= (data_hora_inicial + flow_capture_time_sec) && (flag_loading_config == 0))
                 {
                     // Captura a data inicial - atualiza no momento da coleta real e counter zeroing
                     time(&data_hora_inicial);
-                    // Data a ser utilizada no RRD update, para n„o haver problema na demora entre os updates
+                    // Data a ser utilizada no RRD update, para n√£o haver problema na demora entre os updates
                     time(&data_hora_global);
 //printf("Nova coleta de stats...\n");
                     // Reset na raiz
@@ -237,7 +237,7 @@ Passos:
 
                     inicial();
                     // 2 - COLLECTOR - AGRUPAMENTO
-                    // Processa a coleta e gera estatÌsticas
+                    // Processa a coleta e gera estat√≠sticas
                     for(i=0; i<num_interfaces; i++)
                         processar_coleta_gerada(interfaces[i]);
                     final("netactuator LOG PARSE - BIN SEARCH TO MEMORY");
@@ -252,33 +252,33 @@ Passos:
 
                     inicial();
                     // 3 - CHECAGEM DE LIMITES e ARMAZENAMENTO NO BANCO com flags CLEAN e DIRTY
-                    // 3.1 - GERA GR¡FICOS
-                    // 4 - TOMA A«√O
-                    // Checa se algum host ultrapassou os limites estabelecidos no arquivo de configuraÁ„o
+                    // 3.1 - GERA GR√ÅFICOS
+                    // 4 - TOMA A√á√ÉO
+                    // Checa se algum host ultrapassou os limites estabelecidos no arquivo de configura√ß√£o
                     // Armazena os dados no banco usando flags de limpo e sujo
-                    // Toma as aÁıes necess·rias
+                    // Toma as a√ß√µes necess√°rias
 
-                    // Cria o diretÛrio dos graphs - criar logo antes de tentar usar, caso tenho sido deletado durante a
-                    // execuÁ„o reduz as chances de n„o se encontrar o diretÛrio
+                    // Cria o diret√≥rio dos graphs - criar logo antes de tentar usar, caso tenho sido deletado durante a
+                    // execu√ß√£o reduz as chances de n√£o se encontrar o diret√≥rio
                     sprintf(comando, "mkdir -p %s/graph", base_www);
                     system(comando);
 
                     // Conectar ao DB
                     if ((mysql_conn_global = conectar()))
                     {
-                        // Dentro de checar_limites fica a geraÁ„o dos gr·ficos pq o checar_limites jah varre a ·rvore
+                        // Dentro de checar_limites fica a gera√ß√£o dos gr√°ficos pq o checar_limites jah varre a √°rvore
                         // toda, e captura, para cada host, a sua baseline.
-                        flag_limit_update = 1; // bloqueia geraÁ„o de gr·ficos para evitar conflitos de acesso aos rrd
+                        flag_limit_update = 1; // bloqueia gera√ß√£o de gr√°ficos para evitar conflitos de acesso aos rrd
                         checar_limites(raiz);
                         desconectar(mysql_conn_global);
-                        flag_limit_update = 0; // libera geraÁ„o de gr·ficos
+                        flag_limit_update = 0; // libera gera√ß√£o de gr√°ficos
                     } // if conectar
                     final("LIMIT CHECK");
 
 
                     inicial();
-                    // 9 - CRIA«√O DE LISTAS DE TOP USERS
-                    // CriaÁ„o das listas de Top Users (vazias por enquanto, apenas espaco alocado)
+                    // 9 - CRIA√á√ÉO DE LISTAS DE TOP USERS
+                    // Cria√ß√£o das listas de Top Users (vazias por enquanto, apenas espaco alocado)
                     top_users_frames_recv = criar_lista(top_users);
                     top_users_frames_sent = criar_lista(top_users);
                     top_users_bytes_recv = criar_lista(top_users);
@@ -307,7 +307,7 @@ Passos:
                     gerar_top_users_db();
                     final("GERAR TOP USERS DB");
 
-                    // 10 - LIBERA«√O DA MEM”RIA
+                    // 10 - LIBERA√á√ÉO DA MEM√ìRIA
                     destruir_arvore(raiz);
                     destruir_lista(top_users_frames_recv);
                     destruir_lista(top_users_frames_sent);
@@ -317,10 +317,10 @@ Passos:
                     destruir_lista(top_users_convs_as_destin);
                 } // if data_hora do collector (flow_cap_time)
 
-                // Para imprimir as saÌdas na tela quando h· redir no Shell
+                // Para imprimir as sa√≠das na tela quando h√° redir no Shell
                 fflush(stdout);
 
-                usleep(DELAY_MAIN);    // delay em cada iteraÁ„o do laÁo principal
+                usleep(DELAY_MAIN);    // delay em cada itera√ß√£o do la√ßo principal
             } // while (1)
 //        } // if in_handler
     } // if !erro
