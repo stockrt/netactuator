@@ -32,28 +32,6 @@ make install
 cd /usr/ports/net/rrdtool
 make install
 
-# Alguns links precisam ser criados para a correta compilação do netactuator:
-
-# Att! Não linkar nada antes de ter o php e php-mysql instalados !!! Isso gera erro de
-# compilação em:
-## checking for mysql_close in -lmysqlclient... no
-## checking for mysql_error in -lmysqlclient... no
-
-# O netactuator busca essa biblioteca do MySQL no diretório /usr/local/lib:
-cd /usr/local/lib
-ln -s mysql/libmysqlclient.so.15.0.0
-
-# Headers para compilação
-cd /usr/include
-ln -s /usr/local/include/mysql
-ln -s /usr/local/include/rrd.h
-
-ldconfig
-
-# Se depois de linkar precisar instalar ou atualizar suportes ao MySQL,
-# remova os links criados acima, instale/atualize os suportes ao MySQL, e
-# depois refaça os links.
-
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
 ############################################################################
@@ -165,10 +143,7 @@ Instalar pelo YAST:
 wget ftp://ftp.suntel.com.tr/pub/repo/monitoring/SUSE_Factory/i586/pmacct-0.11.0-15.1.i586.rpm
 rpm -ivh pmacct-0.11.0-15.1.i586.rpm
 
-# O netactuator busca essa biblioteca do MySQL no diretório /usr/local/lib:
-cd /usr/local/lib
-ln -s /usr/lib/libmysqlclient.so.15.0.0
-ldconfig
+Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
 ############################################################################
 # SuSE                                                                     #
