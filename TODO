@@ -59,3 +59,10 @@ Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netac
 
 Author: Rogério Schneider (stockrt@gmail.com)
 http://stockrtweb.homelinux.com
+
+# ubuntu
+apt-get -y install rrdtool
+apt-get -y install librrd2
+apt-get -y install librrd2-dev
+apt-get -y install libmysqlclient-dev
+apt-get -y install mysql-client
