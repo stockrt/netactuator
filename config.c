@@ -106,7 +106,7 @@ void mostrar_configuracoes (void)
 	{
 		printf("Network/Mask %s/", my_ntoa(networks_ranges[i][0] - 1));
 //		printf("%s\n", networks[i][1]);		// mask
-		printf("%d\n", networks_ranges[i][2]);	// mask bits
+		printf("%ld\n", networks_ranges[i][2]);	// mask bits
 
 //		printf("Network      %s\n", my_ntoa(networks_ranges[i][0] - 1));
 //		printf("Netmask      %s\n", networks[i][1]);
