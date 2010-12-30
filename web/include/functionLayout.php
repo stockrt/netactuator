@@ -155,7 +155,7 @@ function formInsertDados($tb, $field) {
 function poweredby() {
 	print"<br>
 		<p class='style1small'>
-			netactuator by Rogério Schneider <br>
+			netactuator by Rogério Carvalho Schneider <br>
 			Interface Web by Lucas Schneider
 		</p>
 	";

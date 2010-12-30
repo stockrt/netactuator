@@ -28,8 +28,8 @@
  * The accepted range is saved on the global vector networks_ranges[]
  * defs.h:unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = ip_final, campo 2 = maskbits (inseridos somente na função netmask_paul_davis())
  *
- * Modification by: Rogério Schneider (stockrt@gmail.com)
- * http://stockrtweb.homelinux.com
+ * Modification by: Rogério Carvalho Schneider (stockrt@gmail.com)
+ * http://stockrt.github.com
  *
  */
 

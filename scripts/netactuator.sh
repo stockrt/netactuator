@@ -2,8 +2,8 @@
 #
 # start/stop/restart/status do netactuator
 #
-# Author: Rogério Schneider (stockrt@gmail.com)
-
+# Author: Rogério Carvalho Schneider (stockrt@gmail.com)
+# http://stockrt.github.com
 
 PID=""
 export LANG="en_US"

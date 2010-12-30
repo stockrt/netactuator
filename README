@@ -15,10 +15,14 @@ máquinas que venham a sair do seu padrão histórico de fluxo comunicação.
 - Hosts podem ser bloqueados/liberados no firewall a qualquer momento, via interface web do netactuator.
 - Toda a configuração e gerência da ferramenta é feita pela web.
 
-netactuator on Google Code:
-Project Home: http://netactuator.googlecode.com
 
-Author: Rogério Schneider (stockrt@gmail.com)
+netactuator on Google Code:
+http://netactuator.googlecode.com
+
+netactuator on Github:
+https://github.com/stockrt/netactuator
+
+Author: Rogério Carvalho Schneider (stockrt@gmail.com)
 http://stockrt.github.com
 
 Web Interface: Lucas Schneider (scorfell@gmail.com)

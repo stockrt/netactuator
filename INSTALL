@@ -1,23 +1,8 @@
 Passos a serem executados para a compilação e instalação do netactuator.
 
-
-netactuator on Web:
-Home: http://stockrtweb.homelinux.com/netactuator
-Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
-Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
-
-netactuator on Google Code:
-Project Home: http://netactuator.googlecode.com
-Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
-Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
-
-Author: Rogério Schneider (stockrt@gmail.com)
-http://stockrtweb.homelinux.com
-
-
-################################################################################################################
-# FreeBSD                                                                                                      #
-################################################################################################################
+############################################################################
+# FreeBSD                                                                  #
+############################################################################
 
 # MySQL 5 (binários e headers)
 cd /usr/ports/databases/mysql50-client
@@ -65,19 +50,20 @@ ln -s /usr/local/include/rrd.h
 
 ldconfig
 
-# Se depois de linkar precisar instalar ou atualizar suportes ao MySQL, remova os links criados acima, instale/atualize os suportes ao 
-# MySQL, e depois refaça os links.
+# Se depois de linkar precisar instalar ou atualizar suportes ao MySQL,
+# remova os links criados acima, instale/atualize os suportes ao MySQL, e
+# depois refaça os links.
 
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
-################################################################################################################
-# FreeBSD                                                                                                      #
-################################################################################################################
+############################################################################
+# FreeBSD                                                                  #
+############################################################################
 
 
-################################################################################################################
-# Fedora Linux                                                                                                 #
-################################################################################################################
+############################################################################
+# Fedora                                                                   #
+############################################################################
 
 # Apache
 yum -y install httpd
@@ -110,14 +96,14 @@ A versão mencionada já se encontra em 'misc'.
 
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
-################################################################################################################
-# Fedora Linux                                                                                                 #
-################################################################################################################
+############################################################################
+# Fedora                                                                   #
+############################################################################
 
 
-################################################################################################################
-# Kurumin Linux / Debian Linux                                                                                 #
-################################################################################################################
+############################################################################
+# Ubuntu / Debian                                                          #
+############################################################################
 
 # MySQL 5 (binários)
 apt-get install mysql-client
@@ -125,7 +111,7 @@ apt-get install mysql-server
 apt-get install mysql-common
 
 # MySQL 5 (headers)
-apt-get install libmysqlclient15-dev (mysql.h e mysql_config)
+apt-get install libmysqlclient16-dev (mysql.h e mysql_config)
 
 # Apache 2
 apt-get install apache
@@ -148,14 +134,14 @@ apt-get install librrd2-dev
 
 Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
-################################################################################################################
-# Kurumin Linux / Debian Linux                                                                                 #
-################################################################################################################
+############################################################################
+# Ubuntu / Debian                                                          #
+############################################################################
 
 
-################################################################################################################
-# SuSE Linux                                                                                                   #
-################################################################################################################
+############################################################################
+# SuSE                                                                     #
+############################################################################
 
 Fazer o download de:
 
@@ -184,21 +170,21 @@ cd /usr/local/lib
 ln -s /usr/lib/libmysqlclient.so.15.0.0
 ldconfig
 
-################################################################################################################
-# SuSE Linux                                                                                                   #
-################################################################################################################
+############################################################################
+# SuSE                                                                     #
+############################################################################
 
 
-################################################################################################################
-# Para todos os sistemas                                                                                       #
-################################################################################################################
+############################################################################
+# Para todos os sistemas                                                   #
+############################################################################
 
    # tar xzvf netactuator.tar.gz
    # cd netactuator
    # make all
    # make instalar
 
-**********************************************************************************************************
+****************************************************************************
 
 - Ajuste as configurações de netactuator.conf:
    # cp /usr/local/etc/netactuator/netactuator.conf-dist /usr/local/etc/netactuator/netactuator.conf
@@ -227,8 +213,20 @@ ldconfig
 - Utilize o script de start/stop/status do netactuator:
    # ./scripts/netactuator.sh
 
-**********************************************************************************************************
+****************************************************************************
 
-################################################################################################################
-# Para todos os sistemas                                                                                       #
-################################################################################################################
+############################################################################
+# Para todos os sistemas                                                   #
+############################################################################
+
+
+netactuator on Google Code:
+http://netactuator.googlecode.com
+
+netactuator on Github:
+https://github.com/stockrt/netactuator
+
+Author: Rogério Carvalho Schneider (stockrt@gmail.com)
+http://stockrt.github.com
+
+Web Interface: Lucas Schneider (scorfell@gmail.com)

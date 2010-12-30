@@ -88,7 +88,7 @@ CREATE TABLE config_admincontacts (
 	email		TEXT NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO config_admincontacts VALUES ('', 'Rogério Schneider', 'stockrt@gmail.com');
+INSERT INTO config_admincontacts VALUES ('', 'Rogério Carvalho Schneider', 'stockrt@gmail.com');
 
 -- IPs sempre liberados
 DROP TABLE IF EXISTS net_whitelist;

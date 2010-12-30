@@ -47,22 +47,13 @@ mesmo assim referenciada em outro ponto do código).
 it more world wide?
 
 
-netactuator on Web:
-Home: http://stockrtweb.homelinux.com/netactuator
-Demo (live): http://stockrtweb.homelinux.com/netactuator/demo
-Source Tarball: http://stockrtweb.homelinux.com/netactuator/netactuator.tar.gz
-
 netactuator on Google Code:
-Project Home: http://netactuator.googlecode.com
-Source Tarball: http://netactuator.googlecode.com/files/netactuator.tar.gz
-Source Checkout: svn checkout http://netactuator.googlecode.com/svn/trunk/ netactuator
+http://netactuator.googlecode.com
 
-Author: Rogério Schneider (stockrt@gmail.com)
-http://stockrtweb.homelinux.com
+netactuator on Github:
+https://github.com/stockrt/netactuator
 
-# ubuntu
-apt-get -y install rrdtool
-apt-get -y install librrd2
-apt-get -y install librrd2-dev
-apt-get -y install libmysqlclient-dev
-apt-get -y install mysql-client
+Author: Rogério Carvalho Schneider (stockrt@gmail.com)
+http://stockrt.github.com
+
+Web Interface: Lucas Schneider (scorfell@gmail.com)
