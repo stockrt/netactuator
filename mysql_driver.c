@@ -26,68 +26,68 @@ MYSQL *mysql_conn_global;
 //int conectar (void)
 MYSQL * conectar (void)
 {
-	MYSQL *mysql_conn;
-	int i, flag_conectou=0;
+    MYSQL *mysql_conn;
+    int i, flag_conectou=0;
 
 
-	mysql_conn = mysql_init(NULL);
-	if (mysql_conn == NULL)
-	{
-		printf("mysql_init() failed (probably out of memory)\n");
-		return NULL;
-	}
+    mysql_conn = mysql_init(NULL);
+    if (mysql_conn == NULL)
+    {
+        printf("mysql_init() failed (probably out of memory)\n");
+        return NULL;
+    }
 
-	// mysql_conn, host, user, passwd, db
-	for(i=0; i<NUM_DB_TRY; i++)
-	{
+    // mysql_conn, host, user, passwd, db
+    for(i=0; i<NUM_DB_TRY; i++)
+    {
 //printf("tentando conectar %d\n", i);
-		if (mysql_real_connect(mysql_conn, db_host, db_user, db_password, db_name, 0, NULL, 0))
-		{
-			flag_conectou = 1;
-			break;
-		}
+        if (mysql_real_connect(mysql_conn, db_host, db_user, db_password, db_name, 0, NULL, 0))
+        {
+            flag_conectou = 1;
+            break;
+        }
 
-		sleep(1);
-	} // for
+        sleep(1);
+    } // for
 
-	if (!flag_conectou)
-	{
-		printf("Erro ao conectar ao banco: %s\n", mysql_error(mysql_conn));
-		mysql_close(mysql_conn);
-		return NULL;
-	}
-	else
-	{
-//		printf("Conectado...\n");
-		return mysql_conn;
-	}
+    if (!flag_conectou)
+    {
+        printf("Erro ao conectar ao banco: %s\n", mysql_error(mysql_conn));
+        mysql_close(mysql_conn);
+        return NULL;
+    }
+    else
+    {
+//        printf("Conectado...\n");
+        return mysql_conn;
+    }
 }
 
 
 //void desconectar (void)
 void desconectar (MYSQL *mysql_conn)
 {
-	mysql_close(mysql_conn);
-//	printf("Desconectado...\n");
+    mysql_close(mysql_conn);
+//    printf("Desconectado...\n");
 }
 
 
 // Executa um SQL e retorna o pointer dos valores encontrados
 MYSQL_RES * sql(tipostring query, MYSQL *mysql_conn)
 {
-	MYSQL_RES *res=NULL;
-	int t;
+    MYSQL_RES *res=NULL;
+    int t;
 
 
-	t = mysql_real_query(mysql_conn, query, (unsigned int) strlen(query));
-	if (t)
-	{
-		printf("Erro ao fazer a query: %s\n", mysql_error(mysql_conn));
-		return NULL;
-	}
-	else
-	{
-		res = mysql_use_result(mysql_conn);
-		return res;
-	}
+    t = mysql_real_query(mysql_conn, query, (unsigned int) strlen(query));
+    if (t)
+    {
+        printf("Erro ao fazer a query: %s\n", mysql_error(mysql_conn));
+        return NULL;
+    }
+    else
+    {
+        res = mysql_use_result(mysql_conn);
+        return res;
+    }
 }

@@ -2,6 +2,9 @@
 #
 # start/stop/restart/status do netactuator
 #
+# chkconfig:   2345 85 15
+# description: netactuator
+#
 # Author: Rogério Carvalho Schneider (stockrt@gmail.com)
 # http://stockrt.github.com
 
@@ -10,89 +13,88 @@ export LANG="en_US"
 export LANGUAGE="en_US"
 export LC_ALL="C"
 
-
 getpid()
 {
-	PID=$(pgrep -f /usr/local/bin/netactuator)
+    PID=$(pgrep -f /usr/local/bin/netactuator)
 }
 
 start()
 {
-	getpid
+    getpid
 
-	if [ "$PID" == "" ]
-	then
-		if [ -x /usr/local/bin/netactuator ]
-		then
-			/usr/local/bin/netactuator >> /var/log/netactuator.log 2>> /var/log/netactuator.log
-			getpid
-			echo "O netactuator foi iniciado sob o pid $PID"
-		fi
-	else
-		echo "O netactuator já está rodando sob o pid $PID"
-	fi
+    if [ "$PID" == "" ]
+    then
+        if [ -x /usr/local/bin/netactuator ]
+        then
+            /usr/local/bin/netactuator >> /var/log/netactuator.log 2>> /var/log/netactuator.log
+            getpid
+            echo "O netactuator foi iniciado sob o pid $PID"
+        fi
+    else
+        echo "O netactuator já está rodando sob o pid $PID"
+    fi
 }
 
 stop()
 {
-	getpid
+    getpid
 
-	if [ "$PID" == "" ]
-	then
-		echo "O netactuator estava rodando?"
-		pkill pmacctd > /dev/null 2>&1
-		pkill pmacct > /dev/null 2>&1
-		pkill netactuator > /dev/null 2>&1
-	else
-		echo "Encerrando o netactuator sob o pid $PID"
-		pkill pmacctd > /dev/null 2>&1
-		pkill pmacct > /dev/null 2>&1
-		pkill netactuator > /dev/null 2>&1
-		kill -9 $PID > /dev/null 2>&1
-		echo "O netactuator foi finalizado"
-	fi
+    if [ "$PID" == "" ]
+    then
+        echo "O netactuator estava rodando?"
+        pkill pmacctd > /dev/null 2>&1
+        pkill pmacct > /dev/null 2>&1
+        pkill netactuator > /dev/null 2>&1
+    else
+        echo "Encerrando o netactuator sob o pid $PID"
+        pkill pmacctd > /dev/null 2>&1
+        pkill pmacct > /dev/null 2>&1
+        pkill netactuator > /dev/null 2>&1
+        kill -9 $PID > /dev/null 2>&1
+        echo "O netactuator foi finalizado"
+    fi
 }
 
 restart()
 {
-	stop
-	start
+    stop
+    start
 }
 
 status()
 {
-	getpid
+    getpid
 
-	if [ "$PID" == "" ]
-	then
-		echo "O netactuator não está rodando"
-	else
-		echo "O netactuator está rodando sob o pid $PID"
-	fi
+    if [ "$PID" == "" ]
+    then
+        echo "O netactuator não está rodando"
+    else
+        echo "O netactuator está rodando sob o pid $PID"
+    fi
 }
 
 case "$1" in
-start)
-	start
-;;
+    start)
+        start
+    ;;
 
-stop)
-	stop
-;;
+    stop)
+        stop
+    ;;
 
-restart)
-	stop
-	start
-;;
+    restart)
+        stop
+        start
+    ;;
 
-status)
-	status
-;;
+    status)
+        status
+    ;;
 
-*)
-	echo "Modo de uso: `basename $0` {start stop restart status}" >&2
-	exit 64
-;;
+    *)
+        echo "Modo de uso: `basename $0` {start stop restart status}" >&2
+        exit 64
+    ;;
 esac
 
 exit 0

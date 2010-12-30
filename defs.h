@@ -19,42 +19,40 @@
 
 // *** DEFINES ***
 
-#define MAX_TAM_LINHA	5000
-#define MAX_ARGS	128
-
+#define MAX_TAM_LINHA   5000
+#define MAX_ARGS        128
 
 // Intervalo entre cada leitura das configs do banco
-#define DELAY_LEITURA_CONFIGS	20
+#define DELAY_LEITURA_CONFIGS   20
 // Intervalo entre cada verificação de hora para update do pattern
-#define DELAY_UPDATE	60
+#define DELAY_UPDATE            60
 // Pausa entre uma verificação de expire time de host bloqueado e outra
-#define DELAY_EXPIRE	40
+#define DELAY_EXPIRE            40
 // Intervalo entre iterações do laço principal
 // 2 s = 20 = ds = 200 cs = 2000 ms = 20000 = ?s = 200000 ?s = 2000000 us -> Usando 20 ms = 20000 us
-#define DELAY_MAIN	20000
-
+#define DELAY_MAIN              20000
 
 // Flags dos registros limpos e sujos do DB (ok e comprometidos)
-#define FLAG_CLEAN	1
-#define FLAG_DIRTY	0
+#define FLAG_CLEAN    1
+#define FLAG_DIRTY    0
 
 // Número de tentativas de conexão com o MySQL antes de desistir
-#define NUM_DB_TRY	5
+#define NUM_DB_TRY    5
 
 // Tabelas
-#define ADMIN_T			"config_admincontacts"
-#define INTERFACES_T		"config_interfaces"
-#define netactuator_T		"config_netactuator"
-#define NETWORKS_T		"config_networks"
+#define ADMIN_T         "config_admincontacts"
+#define INTERFACES_T    "config_interfaces"
+#define netactuator_T   "config_netactuator"
+#define NETWORKS_T      "config_networks"
 
-#define BLACKLIST_T		"net_blacklist"
-#define TOPUSERS_T		"net_topusers"
-#define WHITELIST_T		"net_whitelist"
+#define BLACKLIST_T     "net_blacklist"
+#define TOPUSERS_T      "net_topusers"
+#define WHITELIST_T     "net_whitelist"
 
-#define MASS_T			"storage_mass"
-#define PATTERN_T		"storage_pattern_def"
+#define MASS_T          "storage_mass"
+#define PATTERN_T       "storage_pattern_def"
 
-#define EVENTOS_T		"storage_eventos"
+#define EVENTOS_T       "storage_eventos"
 
 // *** FIM DEFINES ***
 
@@ -62,8 +60,8 @@
 // *** GLOBAIS ***
 
 typedef char tipostring[MAX_TAM_LINHA];
-time_t ini, end;				// marcadores de tempo de execucao
-long count_log=0;				// contador de registros nos logs, com repeticao
+time_t ini, end;    // marcadores de tempo de execucao
+long count_log=0;   // contador de registros nos logs, com repeticao
 
 
 // Árvore
@@ -72,16 +70,16 @@ typedef struct TreeNode *SearchTree;
 
 struct TreeNode
 {
-	tipostring info;
-	long recv_f;
-	long sent_f;
-	long recv_b;
-	long sent_b;
-	long convs_as_source;
-	long convs_as_destin;
-	tipostring iface;
-	SearchTree esq;
-	SearchTree dir;
+    tipostring info;
+    long recv_f;
+    long sent_f;
+    long recv_b;
+    long sent_b;
+    long convs_as_source;
+    long convs_as_destin;
+    tipostring iface;
+    SearchTree esq;
+    SearchTree dir;
 };
 
 SearchTree raiz=NULL;
@@ -93,15 +91,15 @@ typedef struct ListNode *SeqList;
 
 struct ListNode
 {
-	tipostring info;
-	long recv_f;
-	long sent_f;
-	long recv_b;
-	long sent_b;
-	long convs_as_source;
-	long convs_as_destin;
-	tipostring iface;
-	SeqList p;
+    tipostring info;
+    long recv_f;
+    long sent_f;
+    long recv_b;
+    long sent_b;
+    long convs_as_source;
+    long convs_as_destin;
+    tipostring iface;
+    SeqList p;
 };
 
 SeqList top_users_frames_recv=NULL;
@@ -117,22 +115,21 @@ struct graph_data;
 typedef struct graph_data graph_t;
 struct graph_data
 {
-	tipostring info;
-	long recv_f;
-	long sent_f;
-	long recv_b;
-	long sent_b;
-	long convs_as_source;
-	long convs_as_destin;
-	tipostring iface;
-	long baseline;
+    tipostring info;
+    long recv_f;
+    long sent_f;
+    long recv_b;
+    long sent_b;
+    long convs_as_source;
+    long convs_as_destin;
+    tipostring iface;
+    long baseline;
 };
 
 
-
 // Configurações
-int flag_loading_config=1;	// inicia carregando configurações
-int flag_limit_update=0;	// bloqueia geração de gráficos durante o limit (update rrd, evita acessos múltiplos aos rrds)
+int flag_loading_config=1;  // inicia carregando configurações
+int flag_limit_update=0;    // bloqueia geração de gráficos durante o limit (update rrd, evita acessos múltiplos aos rrds)
 
 tipostring interfaces[MAX_ARGS];
 int num_interfaces=0;
@@ -144,8 +141,8 @@ unsigned long networks_ranges[MAX_ARGS][3]; // campo 0 = ip_inicial, campo 1 = i
 int flow_capture_time_min=0;
 int flow_capture_time_sec=0;
 
-//int graph_update_time_min=45;	// minutos, colocar no banco
-int graph_update_time_min=5;	// minutos, colocar no banco
+//int graph_update_time_min=45;   // minutos, colocar no banco
+int graph_update_time_min=5;    // minutos, colocar no banco
 
 tipostring blacklist[MAX_ARGS];
 int num_blacklist=0;
@@ -188,9 +185,10 @@ tipostring db_password;
 tipostring db_name;
 
 
-time_t data_hora_global;	// Usado para fazer update com valor global nos RRDs
+// Datetime
+time_t data_hora_global;    // Usado para fazer update com valor global nos RRDs
 tipostring data;
 tipostring hora;
-tipostring week_day;	// se usar int vai dar erro ao atribuir o dia da semana a partir da struct sdata em netactuator.c
+tipostring week_day;        // se usar int vai dar erro ao atribuir o dia da semana a partir da struct sdata em netactuator.c
 
 // *** FIM GLOBAIS ***

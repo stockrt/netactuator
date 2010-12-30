@@ -1,5 +1,4 @@
 <?php
-
 //$host = "locahost";
 //$user = "root";
 //$pass = "";

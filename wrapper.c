@@ -19,12 +19,16 @@
 
 void pmacctd_wrapper (tipostring iface)
 {
-	tipostring comando;
+    tipostring comando;
 
 
-	// Monta o comando a ser executado.
-	sprintf(comando, "%s -c src_host,dst_host -p /tmp/collect.pipe.%s -P memory -i %s \
-		-F /var/run/pmacctd.pid.%s -D", pmacctd_bin, iface, iface, iface);
-//printf("Lancando pmacctd: %s\n", comando);
-	system(comando);
+    // Monta o comando a ser executado.
+    sprintf(comando, "%s \
+            -c src_host,dst_host \
+            -p /tmp/collect.pipe.%s \
+            -P memory \
+            -i %s \
+            -F /var/run/pmacctd.pid.%s \
+            -D", pmacctd_bin, iface, iface, iface);
+    system(comando);
 }

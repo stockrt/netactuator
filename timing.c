@@ -20,19 +20,18 @@
 // Pega a hora inicial
 void inicial (void)
 {
-	time(&ini);
+    time(&ini);
 }
 
 
 // Pega a hora final
 void final (tipostring mensagem)
 {
-	time_t total;
+    time_t total;
 
 
-	time(&end);
-	total = end - ini;
+    time(&end);
+    total = end - ini;
 
-//	printf("\n");
-	printf("Processing Time %s: %ld\n", mensagem, total);
+    printf("Processing Time %s: %ld\n", mensagem, total);
 }

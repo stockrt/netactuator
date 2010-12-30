@@ -1,122 +1,121 @@
 <style type="text/css">
 <!--
 body {
-scrollbar-face-color:#0099FF;
-scrollbar-highlight-color:#0099FF;
-scrollbar-3dlight-color:#FFFFFF;
-scrollbar-darkshadow-color:#FFFFFF;
-scrollbar-shadow-color:#0099FF;
-scrollbar-arrow-color:#FFFFFF;
-scrollbar-track-color:#FFFFFF;
+    scrollbar-face-color:#0099FF;
+    scrollbar-highlight-color:#0099FF;
+    scrollbar-3dlight-color:#FFFFFF;
+    scrollbar-darkshadow-color:#FFFFFF;
+    scrollbar-shadow-color:#0099FF;
+    scrollbar-arrow-color:#FFFFFF;
+    scrollbar-track-color:#FFFFFF;
 
-	/* background: url("../../images/fundos/background.gif")
-	no-repeat fixed; */
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	background-color: #FFFFFF;
+    /* background: url("../../images/fundos/background.gif")
+    no-repeat fixed; */
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    background-color: #FFFFFF;
 }
 
 td {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 th {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .bodystyle {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .small {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 9px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 9px;
 }
 
 .medium {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 .big {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 16px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 .xbig {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 24px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 24px;
 }
 
 .expanded {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	line-height: 16px;
-	letter-spacing: 2px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
 }
 
 .justified {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	text-align: justify;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    text-align: justify;
 }
 
 .footer {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 9px;
-	color: #999999;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 9px;
+    color: #999999;
 }
 
 .box1 {
-	padding: 3px;
-	border-width: thin;
-	border-style: solid;
-	border-color: #CCCCCC #666666 #666666 #CCCCCC;
+    padding: 3px;
+    border-width: thin;
+    border-style: solid;
+    border-color: #CCCCCC #666666 #666666 #CCCCCC;
 }
 
 .box2 {
-	font-style: italic;
-	word-spacing: 2pt;
-	padding: 3px;
-	border-width: thin;
-	border-style: solid;
+    font-style: italic;
+    word-spacing: 2pt;
+    padding: 3px;
+    border-width: thin;
+    border-style: solid;
 }
 
-
 .style1small {
-	font-size: xx-small
+    font-size: xx-small
 }
 
 .style30 {
-	color: #000000;
-	font-weight: bold;
+    color: #000000;
+    font-weight: bold;
 }
 a {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #0066FF;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #0066FF;
 }
 a:link {
-	text-decoration: none;
-	color: #0000FF;
+    text-decoration: none;
+    color: #0000FF;
 }
 a:visited {
-	text-decoration: none;
-	color: #0066FF;
+    text-decoration: none;
+    color: #0066FF;
 }
 a:hover {
-	text-decoration: none;
-	color: #000000;
+    text-decoration: none;
+    color: #000000;
 }
 a:active {
-	text-decoration: none;
-	color: #0000FF;
+    text-decoration: none;
+    color: #0000FF;
 }
 -->
 </style>
