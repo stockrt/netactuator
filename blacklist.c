@@ -104,14 +104,12 @@ void on_the_fly (void)
                 expire_time = atol(row[1]);
 
                 if (expire_time <= data_hora && expire_time != 0)
-                    if (flag_block_hosts)
-                    {
-                        desbloquear_host(host);
-                        registrar_evento(host, -1, -1, "Desbloqueado");
-                    }
+                {
+                    desbloquear_host(host);
+                    registrar_evento(host, -1, -1, "Desbloqueado");
+                }
                 else
-                    if (flag_block_hosts)
-                        bloquear_host(host, 0); // Será testado se já está ou não bloqueado
+                    bloquear_host(host, 0); // Será testado se já está ou não bloqueado
             }
 
             // Gera a lista dos atuais bloqueados no firewall e verifica quais deve liberar
@@ -137,8 +135,7 @@ void on_the_fly (void)
                     mysql_free_result(res);
 
                     if (!flag_consta)
-                        if (flag_block_hosts)
-                            desbloquear_host(linha);
+                        desbloquear_host(linha);
 //printf("while filter drops\n");
 //fflush(stdout);
                 }

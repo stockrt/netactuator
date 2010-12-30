@@ -172,6 +172,8 @@ float threshold=0;
 
 int flag_block_hosts=0;
 
+int flag_send_email=0;
+
 
 // Firewall
 int is_ipfw=0;

@@ -62,7 +62,8 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
                 fclose(mail_handler);
                 printf("Mandando mail para %s\n", admin_contacts[i]);
                 sprintf(comando, "mail -s 'netactuator - Alerta Host \"%s\"' %s < %s", comeca->info, admin_contacts[i], mail_temp_file);
-                system(comando);
+                if (flag_send_email)
+                    system(comando);
             }
         }
     }
@@ -111,7 +112,8 @@ int bloquear_host (tipostring info, int expire)
                 sprintf(comando, "%s -I INPUT -t filter -s %s -j DROP", fire_bin, info);
 
             printf("Bloqueando host: %s\n", info);
-            system(comando);
+            if (flag_block_hosts)
+                system(comando);
             inserir_blacklist(info, expire);
 
             fflush(stdout);
@@ -159,7 +161,8 @@ void desbloquear_host (tipostring info)
             sprintf(comando, "%s -D INPUT -t filter -s %s -j DROP", fire_bin, info);
 
         printf("Liberando host: %s\n", info);
-        system(comando);
+        if (flag_block_hosts)
+            system(comando);
         fflush(stdout);
     }
 
