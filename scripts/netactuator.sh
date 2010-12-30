@@ -26,7 +26,7 @@ start()
     then
         if [ -x /usr/local/bin/netactuator ]
         then
-            /usr/local/bin/netactuator >> /var/log/netactuator.log 2>> /var/log/netactuator.log
+            /usr/local/bin/netactuator >> /var/log/netactuator.log 2>&1
             getpid
             echo "O netactuator foi iniciado sob o pid $PID"
         fi
