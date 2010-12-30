@@ -161,6 +161,9 @@ void mostrar_configuracoes (void)
 	printf("\n");
 	printf("Threshold: %.2f(fator) | %.0f%%\n", threshold, (threshold - 1) * 100);
 
+	printf("\n");
+	printf("Flag Block Hosts: %d\n", flag_block_hosts);
+
 	printf("\n\n");
 
 	fflush(stdout);
@@ -244,7 +247,7 @@ void carregar_configuracoes (tipostring arquivo)
 				netmask_paul_davis();
 
 
-			sprintf(query, "SELECT flow_capture_time_min,pmacctd_bin,pmacct_bin,fire_bin,top_users,base_www,block_time_min,days_to_keep,days_to_learn,threshold FROM %s;", netactuator_T);
+			sprintf(query, "SELECT flow_capture_time_min,pmacctd_bin,pmacct_bin,fire_bin,top_users,base_www,block_time_min,days_to_keep,days_to_learn,threshold,flag_block_hosts FROM %s;", netactuator_T);
 			res = sql(query, conn);
 			while ((row = mysql_fetch_row(res)))
 			{
@@ -264,6 +267,7 @@ void carregar_configuracoes (tipostring arquivo)
 				days_to_keep = atoi(row[7]);
 				days_to_learn = atoi(row[8]);
 				threshold = 1 + (atof(row[9]) / 100);
+				flag_block_hosts = atoi(row[10]);
 			}
 
 

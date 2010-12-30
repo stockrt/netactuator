@@ -41,10 +41,11 @@ CREATE TABLE config_netactuator (
 	days_to_keep		INT UNSIGNED NOT NULL,
 	days_to_learn		INT UNSIGNED NOT NULL,
 	threshold		INT UNSIGNED NOT NULL,
+	flag_block_hosts		INT UNSIGNED NOT NULL,
 	PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
---INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/ipfw', 15, '/usr/local/netactuator/web', 30, 90, 7, 300);
-INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/iptables', 15, '/usr/local/netactuator/web', 30, 90, 7, 300);
+--INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/ipfw', 15, '/usr/local/netactuator/web', 30, 90, 7, 300, 0);
+INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/iptables', 15, '/usr/local/netactuator/web', 30, 90, 7, 300, 0);
 
 -- Configuração das interfaces de rede a serem monitoradas
 DROP TABLE IF EXISTS config_interfaces;

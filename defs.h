@@ -173,6 +173,8 @@ int days_to_learn=0;
 
 float threshold=0;
 
+int flag_block_hosts=0;
+
 
 // Firewall
 int is_ipfw=0;

@@ -105,12 +105,16 @@ void on_the_fly (void)
 
 				if (expire_time <= data_hora && expire_time != 0)
 				{
-					desbloquear_host(host);
-					registrar_evento(host, -1, -1, "Desbloqueado");
+                    if (flag_block_hosts)
+                    {
+                        desbloquear_host(host);
+                        registrar_evento(host, -1, -1, "Desbloqueado");
+                    }
 				}
 				else
 				{
-					bloquear_host(host, 0); // Será testado se já está ou não bloqueado
+                    if (flag_block_hosts)
+                        bloquear_host(host, 0); // Será testado se já está ou não bloqueado
 				}
 			}
 
@@ -138,7 +142,8 @@ void on_the_fly (void)
 
 					if (!flag_consta)
 					{
-						desbloquear_host(linha);
+                        if (flag_block_hosts)
+                            desbloquear_host(linha);
 					}
 //printf("while filter drops\n");
 //fflush(stdout);
