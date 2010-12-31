@@ -1,5 +1,5 @@
 #
-# Esta é a configuração do netactuator para ser acessado pelo Apache.
+# This is the configuration of the netactuator to be accessed by Apache.
 #
 
 Alias /netactuator /usr/local/netactuator/web

@@ -1,10 +1,10 @@
 USE mysql;
 
--- Criação do usuário
+-- Creating user for netactuator
 --REPLACE INTO user (host, user, password) VALUES ('%', 'netactuator', OLD_PASSWORD('netdbpass'));
 REPLACE INTO user (host, user, password) VALUES ('localhost', 'netactuator', OLD_PASSWORD('netdbpass'));
 
--- Permissões de acesso do usuário
+-- Permissions for user
 --REPLACE INTO db (host, db, user, select_priv, insert_priv, update_priv, delete_priv, create_priv, drop_priv, index_priv)
 --    VALUES (
 --    '%',
@@ -20,14 +20,14 @@ REPLACE INTO db (host, db, user, select_priv, insert_priv, update_priv, delete_p
     'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'
 );
 
--- Atualiza os privilégios dados
+-- Reloading privileges
 FLUSH PRIVILEGES;
 
--- Criação do banco de dados e conexão com o banco
+-- Creating database if it's not preasent
 CREATE DATABASE IF NOT EXISTS netactuator;
 USE netactuator;
 
--- Configurações da ferramenta
+-- Settings
 DROP TABLE IF EXISTS config_netactuator;
 CREATE TABLE config_netactuator (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -48,7 +48,7 @@ CREATE TABLE config_netactuator (
 --INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/ipfw', 15, '/usr/local/netactuator/web', 30, 90, 7, 300, 0, 0);
 INSERT INTO config_netactuator VALUES ('', 5, '/usr/local/sbin/pmacctd', '/usr/local/bin/pmacct', '/sbin/iptables', 15, '/usr/local/netactuator/web', 30, 90, 7, 300, 0, 0);
 
--- Configuração das interfaces de rede a serem monitoradas
+-- Interfaes used for monitroring
 DROP TABLE IF EXISTS config_interfaces;
 CREATE TABLE config_interfaces (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -66,7 +66,7 @@ INSERT INTO config_interfaces VALUES ('', 'vmnet8');
 INSERT INTO config_interfaces VALUES ('', 'lnc0');
 INSERT INTO config_interfaces VALUES ('', 'lo');
 
--- Configuração das redes a serem avaliadas
+-- Configuration for networks to be monitored
 DROP TABLE IF EXISTS config_networks;
 CREATE TABLE config_networks (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -81,7 +81,7 @@ INSERT INTO config_networks VALUES ('', '192.168.0.0/16');
 INSERT INTO config_networks VALUES ('', '189.0.0.0/8');
 INSERT INTO config_networks VALUES ('', '127.0.0.1/30');
 
--- Configuração dos contatos administrativos
+-- Configuration of administrators and contacts
 DROP TABLE IF EXISTS config_admincontacts;
 CREATE TABLE config_admincontacts (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -91,7 +91,7 @@ CREATE TABLE config_admincontacts (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 INSERT INTO config_admincontacts VALUES ('', 'Rogério Carvalho Schneider', 'stockrt@gmail.com');
 
--- IPs sempre liberados
+-- IPs that will be always whitelisted
 DROP TABLE IF EXISTS net_whitelist;
 CREATE TABLE net_whitelist (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -102,7 +102,7 @@ CREATE TABLE net_whitelist (
 INSERT INTO net_whitelist VALUES ('', '200.180.200.125', 'stockrt');
 INSERT INTO net_whitelist VALUES ('', '200.180.200.126', 'island');
 
--- IPs bloqueados
+-- IPs blacklist
 DROP TABLE IF EXISTS net_blacklist;
 CREATE TABLE net_blacklist (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -113,7 +113,7 @@ CREATE TABLE net_blacklist (
     PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- IPs com maior utilização de recurso
+-- IPs with greater resource utilization
 DROP TABLE IF EXISTS net_topusers;
 CREATE TABLE net_topusers (
     host                    VARCHAR(15) NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE net_topusers (
 # 5 - bytes_recv
 # 6 - bytes_sent
 
--- Armazenamento geral dos dados coletados
+-- General storage for collected data
 DROP TABLE IF EXISTS storage_mass;
 CREATE TABLE storage_mass (
     host                    VARCHAR(15) NOT NULL,
@@ -150,7 +150,7 @@ CREATE TABLE storage_mass (
     interface               VARCHAR(5) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Armazenamento dos padrões definidos
+-- Storage for patters and definitions
 DROP TABLE IF EXISTS storage_pattern_def;
 CREATE TABLE storage_pattern_def (
     host                    VARCHAR(15) NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE storage_pattern_def (
     PRIMARY KEY (host)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Armazenamento dos eventos ocorridos
+-- Storage for events
 DROP TABLE IF EXISTS storage_eventos;
 CREATE TABLE storage_eventos (
     host                    VARCHAR(15) NOT NULL,
@@ -171,7 +171,7 @@ CREATE TABLE storage_eventos (
     description             TEXT NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Configuração de visualizacão/alteração das tabelas pela interface gráfica
+-- Display setting / alteration of the tables by graphical interface
 DROP TABLE IF EXISTS config_tables;
 CREATE TABLE config_tables (
     id                      INT UNSIGNED NOT NULL auto_increment,
@@ -197,9 +197,9 @@ INSERT INTO config_tables VALUES ('', 'storage_pattern_def', 1, 0, 0, 0, 0, 'PAD
 INSERT INTO config_tables VALUES ('', 'storage_eventos', 1, 0, 0, 0, 0, 'EVENTOS');
 INSERT INTO config_tables VALUES ('', 'config_tables', 0, 0, 1, 1, 1, 'TABELAS');
 
--- Ajusta privilégios de acesso
+-- Setting access privileges for user netactuator
 --GRANT ALL PRIVILEGES ON netactuator.* TO 'netactuator'@'%';
 GRANT ALL PRIVILEGES ON netactuator.* TO 'netactuator'@'localhost';
 
--- Atualiza os privilégios concedidos
+-- Reloading privileges
 FLUSH PRIVILEGES;

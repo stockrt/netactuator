@@ -1,8 +1,8 @@
 #
-# Arquivo de configuração do netactuator.
+# Configuration for database connectivity
 #
-
-## Utilize o script de inicialização do banco para poder usar o netactuator ##
+#
+# Use startup script for starting/stoping netactuator ##
 
 ## Database ##
 

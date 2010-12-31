@@ -17,7 +17,7 @@ default:
 	@echo
 	@echo "build/all    -> compile netactuator."
 	@echo "install     -> install netactuator with interface Web."
-	@echo "desinstalar  -> remove netactuator from system."
+	@echo "deinstall  -> remove netactuator from system."
 	@echo "clean        -> cleanup compile dir."
 	@echo
 
@@ -25,52 +25,52 @@ build: all
 all:
 	@echo
 
-	@echo "Compilando com a linha $(COMP) ..."
+	@echo "Compiling withe the line $(COMP) ..."
 	@$(COMP)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 
 install:
 	@echo
 
-	@echo "Instalando \"$(MAIN_OUTPUT)\" em \"$(INST_DEST)\""
+	@echo "Installing \"$(MAIN_OUTPUT)\" in \"$(INST_DEST)\""
 	@mkdir -p $(INST_DEST)
 	@cp -v $(MAIN_OUTPUT) $(INST_DEST)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 
-	@echo "Instalando \"$(CONFIG_FILE)\" em \"$(INST_DEST_CONF)\""
+	@echo "Installing \"$(CONFIG_FILE)\" in \"$(INST_DEST_CONF)\""
 	@mkdir -p $(INST_DEST_CONF)
 	@cp -v $(CONFIG_FILE) $(INST_DEST_CONF)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 
-	@echo "Instalando o sistema web do netactuator em \"$(INST_DEST_WEB)/web\""
+	@echo "Installing web files into \"$(INST_DEST_WEB)/web\""
 	@mkdir -p $(INST_DEST_WEB)
 	@cp -Rv web $(INST_DEST_WEB)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 
-	@echo "Fixando permissões de $(INST_DEST)/$(MAIN_OUTPUT)"
+	@echo "Fixing permissions of $(INST_DEST)/$(MAIN_OUTPUT)"
 	@chmod 555 $(INST_DEST)/$(MAIN_OUTPUT)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 
 	@echo
 	@echo "****************************************************************"
 	@echo
-	@echo "- Ajuste as configurações de netactuator.conf:"
+	@echo "- Copy and change setting for database for netactuator.conf:"
 	@echo "   # cp $(INST_DEST_CONF)/$(CONFIG_FILE) $(INST_DEST_CONF)/netactuator.conf"
 	@echo
-	@echo "- Utilize o script de inicialização do banco de dados para começar a usar o netactuator:"
+	@echo "- Edit first the right user/pass/database in .sql and import it into MySQL:"
 	@echo "   # mysql < sql/netactuator-mysql.sql"
 	@echo
-	@echo "- Ajuste o seu httpd.conf:"
+	@echo "- Add an alias for Apache in httpd.conf:"
 	@echo "   Alias /netactuator /usr/local/netactuator/web"
 	@echo "   <Directory /usr/local/netactuator/web/>"
 	@echo "       #AddDefaultCharset ISO-8859-1"
@@ -79,33 +79,33 @@ install:
 	@echo "       Order deny,allow"
 	@echo "       Allow from all"
 	@echo "   </Directory>"
-	@echo "- Ou utilize o arquivo fornecido:"
+	@echo "- or copy this setup to your Apache /etc/conf.d/ dir:"
 	@echo "   # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf"
 	@echo
-	@echo "- Altere os seguintes parâmetros no php.ini:"
+	@echo "- Check php.ini and alter it's configuration to match those:
 	@echo "   output_buffering = On"
 	@echo "   variables_order = \"EGPCS\""
 	@echo "   register_globals = On"
 	@echo "   session.auto_start = 1"
 	@echo
-	@echo "- Utilize o script de start/stop/status do netactuator:"
+	@echo "- Copy Netactuator script to your /etc/init.d/ dir
 	@echo "   # ./scripts/netactuator.sh"
 	@echo
 	@echo "****************************************************************"
 	@echo
 
-desinstalar:
+desinstall:
 	@echo
 
-	@echo "Removendo \"$(MAIN_OUTPUT)\" de \"$(INST_DEST)\""
+	@echo "Removing \"$(MAIN_OUTPUT)\" of \"$(INST_DEST)\""
 	@rm -f $(INST_DEST)/$(MAIN_OUTPUT)
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
 	@echo "****************************************************************"
 	@echo
-	@echo "Os arquivos de configuração serão mantidos em \"$(INST_DEST_CONF)\"."
-	@echo "O diretório \"$(INST_DEST_WEB)\" foi mantido com suas bases históricas, remova-o manualmente, se desejar."
+	@echo "The configuration files are kept in \"$(INST_DEST_CONF)\"."
+	@echo "Directory \"$(INST_DEST_WEB)\" was kept with its files/dirs, remove manually if desired so."
 	@echo
 	@echo "****************************************************************"
 	@echo
@@ -113,10 +113,10 @@ desinstalar:
 clean:
 	@echo
 
-	@echo "Removendo binários e objetos locais de $(MAIN_OUTPUT) ..."
+	@echo "Removing binary objects and locations from $(MAIN_OUTPUT) ..."
 	@rm -f $(MAIN_OUTPUT)
 	@rm -f $(MAIN_OUTPUT).o
 	@rm -f $(MAIN_OUTPUT).core
 	@sleep 1
-	@echo "Pronto"
+	@echo "Done"
 	@echo
