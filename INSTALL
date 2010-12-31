@@ -1,10 +1,10 @@
-Passos a serem executados para a compilação e instalação do netactuator.
-
+Here is a list of steps to preform an installation of Netactuator.
+Any updates for different linux distributions please send to Author.
 ############################################################################
 # FreeBSD                                                                  #
 ############################################################################
 
-# MySQL 5 (binários e headers)
+# MySQL 5 (Binary and headers)
 cd /usr/ports/databases/mysql50-client
 make install
 cd /usr/ports/databases/mysql50-server
@@ -12,7 +12,7 @@ make install
 cd /usr/ports/databases/mysql50-scripts
 make install
 
-# Apache 1 ou 2
+# Apache 1 or 2
 cd /usr/ports/www/apache{13,20,21,22}
 make install
 
@@ -28,17 +28,12 @@ make install
 cd /usr/ports/net-mgmt/pmacct
 make install
 
-# RRDTool (binários e headers)
+# RRDTool (binary and headers)
 cd /usr/ports/net/rrdtool
 make install
 
-Depois destes passos o netactuator pode ser compilado e instalado no sistema.
-
-############################################################################
-# FreeBSD                                                                  #
-############################################################################
-
-
+After completing this steps, you can compile and install Netactuator.
+After these steps the netactuator can be compiled and installed on the system.(bottom)
 ############################################################################
 # Fedora                                                                   #
 ############################################################################
@@ -61,40 +56,36 @@ yum -y install libpcap-devel
 
 # pmacct
 http://www.pmacct.net/
-pmacct-0.11.5.tar.gz ou mais novo
+pmacct-0.11.5.tar.gz or mais novo
 
-wget http://www.pmacct.net/pmacct-0.11.5.tar.gz
-tar xzvf pmacct-0.11.5.tar.gz
-cd pmacct-0.11.5
+#wget http://www.pmacct.net/pmacct-0.12.5.tar.gz
+#or 
+cd misc/3rd-software/pmacct/
+tar xzvf pmacct-0.12.5.tar.gz
+cd pmacct-0.12.5
 ./configure
 make
 make install
 
-A versão mencionada já se encontra em 'misc'.
+You will find a fresh version under mics/pmacct in this package.
 
-Depois destes passos o netactuator pode ser compilado e instalado no sistema.
-
-############################################################################
-# Fedora                                                                   #
-############################################################################
-
-
+After these steps the netactuator can be compiled and installed on the system.(bottom)
 ############################################################################
 # Ubuntu / Debian                                                          #
 ############################################################################
 
-# MySQL 5 (binários)
+# MySQL 5 (binary)
 apt-get install mysql-client
 apt-get install mysql-server
 apt-get install mysql-common
 
 # MySQL 5 (headers)
-apt-get install libmysqlclient16-dev (mysql.h e mysql_config)
+apt-get install libmysqlclient16-dev (mysql.h and mysql_config)
 
 # Apache 2
 apt-get install apache
 
-# PHP 4 ou PHP 5
+# PHP 4 or PHP 5
 apt-get install php{4,5}
 
 # PHP com suporte a MySQL
@@ -110,18 +101,12 @@ apt-get install rrdtool
 apt-get install librrd2
 apt-get install librrd2-dev
 
-Depois destes passos o netactuator pode ser compilado e instalado no sistema.
-
-############################################################################
-# Ubuntu / Debian                                                          #
-############################################################################
-
-
+After these steps the netactuator can be compiled and installed on the system.(bottom)
 ############################################################################
 # SuSE                                                                     #
 ############################################################################
 
-Fazer o download de:
+You need to download:
 
 # Mysql 5.0 Client:
 wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-client-standard-5.0.26-0.sles9.i586.rpm/from/http://www.linorg.usp.br/mysql/
@@ -130,28 +115,22 @@ wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-server-standard-5.0.26-0
 # MySql 5.0 - Headers and libraries:
 wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-devel-standard-5.0.26-0.sles9.i586.rpm/from/http://www.linorg.usp.br/mysql/
 
-# Instalar os programas baixados:
+# Install all downloaded rpms:
 rpm -ivh MySQL-server-standard-5.0.26-0.sles9.i586.rpm MySQL-client-standard-5.0.26-0.sles9.i586.rpm MySQL-devel-standard-5.0.26-0.sles9.i586.rpm
 
-Instalar pelo YAST:
+Install with YAST:
 - Apache 2
 - Php 5
 - Php 5 MySQL
 - RRDTool 1.2.11
 
-# Instalar o pmacct:
+# Install pmacct:
 wget ftp://ftp.suntel.com.tr/pub/repo/monitoring/SUSE_Factory/i586/pmacct-0.11.0-15.1.i586.rpm
 rpm -ivh pmacct-0.11.0-15.1.i586.rpm
 
-Depois destes passos o netactuator pode ser compilado e instalado no sistema.
-
+After these steps the netactuator can be compiled and installed on the system.(bottom)
 ############################################################################
-# SuSE                                                                     #
-############################################################################
-
-
-############################################################################
-# Para todos os sistemas                                                   #
+# For all systems after steps above                                        #
 ############################################################################
 
    # tar xzvf netactuator.tar.gz
@@ -161,39 +140,41 @@ Depois destes passos o netactuator pode ser compilado e instalado no sistema.
 
 ****************************************************************************
 
-- Ajuste as configurações de netactuator.conf:
+- Copy and change setting for database for netactuator.conf:
    # cp /usr/local/etc/netactuator/netactuator.conf-dist /usr/local/etc/netactuator/netactuator.conf
 
-- Utilize o script de inicialização do banco de dados para começar a usar o netactuator:
+- Edit first the right user/pass/database in .sql and import it into MySQL.
    # mysql < sql/netactuator-mysql.sql
 
-- Ajuste o seu httpd.conf:
+- Add an alias for Apache in httpd.conf:
    Alias /netactuator /usr/local/netactuator/web
    <Directory /usr/local/netactuator/web>
-       AddDefaultCharset ISO-8859-1
+       AddDefaultCharset UTF-8
        Options None
        AllowOverride None
        Order deny,allow
        Allow from all
    </Directory>
-- Ou utilize o arquivo fornecido:
+- or copy this setup to your Apache /etc/conf.d/ dir 
    # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf
 
-- Altere os seguintes parâmetros no php.ini:
-   output_buffering = On
+- Check php.ini and alter it's configuration to match those:
+   ortput_buffering = On
    variables_order = "EGPCS"
    register_globals = On
    session.auto_start = 1
 
-- Utilize o script de start/stop/status do netactuator:
+- Copy Netactuator script to your /etc/init.d/ dir
    # ./scripts/netactuator.sh
+   Also please rember to add it to startup config if you want to run it after reboot.
+   
+   Debian:
+   #cd /etc/init.d/
+   #update-rc.d defaults netactuator.sh
+   
 
 ****************************************************************************
-
-############################################################################
-# Para todos os sistemas                                                   #
-############################################################################
-
+END
 
 netactuator on Google Code:
 http://netactuator.googlecode.com

@@ -7,6 +7,7 @@
 #
 # Author: Rogério Carvalho Schneider (stockrt@gmail.com)
 # http://stockrt.github.com
+# Translation: Peter Okupski okupski@widzew.net
 
 PID=""
 export LANG="en_US"
@@ -28,10 +29,10 @@ start()
         then
             /usr/local/bin/netactuator >> /var/log/netactuator.log 2>&1
             getpid
-            echo "O netactuator foi iniciado sob o pid $PID"
+            echo "Netactuator has started with pid $PID"
         fi
     else
-        echo "O netactuator já está rodando sob o pid $PID"
+        echo "Netactuator is already running with pid $PID"
     fi
 }
 
@@ -41,17 +42,17 @@ stop()
 
     if [ "$PID" == "" ]
     then
-        echo "O netactuator estava rodando?"
+        echo "No PID for Netactuator making sure it's not running"
         pkill pmacctd > /dev/null 2>&1
         pkill pmacct > /dev/null 2>&1
         pkill netactuator > /dev/null 2>&1
     else
-        echo "Encerrando o netactuator sob o pid $PID"
+        echo "Closing Netactuator with pid $PID"
         pkill pmacctd > /dev/null 2>&1
         pkill pmacct > /dev/null 2>&1
         pkill netactuator > /dev/null 2>&1
         kill -9 $PID > /dev/null 2>&1
-        echo "O netactuator foi finalizado"
+        echo "Netactuator was shutdown"
     fi
 }
 
@@ -67,9 +68,9 @@ status()
 
     if [ "$PID" == "" ]
     then
-        echo "O netactuator não está rodando"
+        echo "Netactuator is not running"
     else
-        echo "O netactuator está rodando sob o pid $PID"
+        echo "Netactuator is running with pid $PID"
     fi
 }
 
@@ -92,7 +93,7 @@ case "$1" in
     ;;
 
     *)
-        echo "Modo de uso: `basename $0` {start stop restart status}" >&2
+        echo "Usage: `basename $0` {start stop restart status}" >&2
         exit 64
     ;;
 esac

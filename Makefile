@@ -13,12 +13,12 @@ INST_DEST_WEB=/usr/local/netactuator
 default:
 	@echo
 
-	@echo "As opções para make são:"
+	@echo "Usage:"
 	@echo
-	@echo "build/all    -> Compila o netactuator."
-	@echo "instalar     -> Instala o netactuator (depois de compilado). Binário e interface Web."
-	@echo "desinstalar  -> Desinstala o netactuator."
-	@echo "clean        -> Limpa o workdir e remove o binário gerado do diretório atual."
+	@echo "build/all    -> compile netactuator."
+	@echo "install     -> install netactuator with interface Web."
+	@echo "desinstalar  -> remove netactuator from system."
+	@echo "clean        -> cleanup compile dir."
 	@echo
 
 build: all
@@ -31,7 +31,7 @@ all:
 	@echo "Pronto"
 	@echo
 
-instalar:
+install:
 	@echo
 
 	@echo "Instalando \"$(MAIN_OUTPUT)\" em \"$(INST_DEST)\""
