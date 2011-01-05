@@ -82,13 +82,13 @@ install:
 	@echo "- or copy this setup to your Apache /etc/conf.d/ dir:"
 	@echo "   # cp netactuator-apache.conf-dist /etc/httpd/conf.d/netactuator-apache.conf"
 	@echo
-	@echo "- Check php.ini and alter it's configuration to match those:
+	@echo "- Check php.ini and alter it's configuration to match those:"
 	@echo "   output_buffering = On"
 	@echo "   variables_order = \"EGPCS\""
 	@echo "   register_globals = On"
 	@echo "   session.auto_start = 1"
 	@echo
-	@echo "- Copy Netactuator script to your /etc/init.d/ dir
+	@echo "- Copy Netactuator script to your /etc/init.d/ dir"
 	@echo "   # ./scripts/netactuator.sh"
 	@echo
 	@echo "****************************************************************"

@@ -207,7 +207,7 @@ void rrd_graph_rog (int tip, int cod, tipostring host)
     }
     else {
         //strftime(rrdmtime_comment, sizeof(rrdmtime_comment), "COMMENT:Ultima leitura\\:\t\t\t%a, %d %b %Y %H\\:%M\\:%S %Z", localtime(&sb.st_mtime));
-        strftime(rrdmtime_comment, sizeof(rrdmtime_comment), "COMMENT:Ultima leitura\\:            %a, %d %b %Y %H\\:%M\\:%S %Z", localtime(&sb.st_mtime));
+        strftime(rrdmtime_comment, sizeof(rrdmtime_comment), "COMMENT:Last reading\\:            %a, %d %b %Y %H\\:%M\\:%S %Z", localtime(&sb.st_mtime));
     }
 
     if (tip == 0)
@@ -220,7 +220,7 @@ void rrd_graph_rog (int tip, int cod, tipostring host)
         if (cod == 0)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_base_day.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Diario - %s", host);
+            sprintf(tittle, "Day - %s", host);
             strcpy(start, "-1day12hours");
             strcpy(x_axis, "HOUR:1:HOUR:1:HOUR:2:0:%H");
         }
@@ -228,7 +228,7 @@ void rrd_graph_rog (int tip, int cod, tipostring host)
         if (cod == 1)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_base_week.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Semanal - %s", host);
+            sprintf(tittle, "Week - %s", host);
             strcpy(start, "-1week2days");
             strcpy(x_axis, "HOUR:8:DAY:1:DAY:1:86400:%a");
         }
@@ -236,7 +236,7 @@ void rrd_graph_rog (int tip, int cod, tipostring host)
         if (cod == 2)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_base_month.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Mensal - %s", host);
+            sprintf(tittle, "Month - %s", host);
             strcpy(start, "-1month1week");
             strcpy(x_axis, "DAY:1:WEEK:1:WEEK:1:604800:Semana %W");
         }
@@ -244,7 +244,7 @@ void rrd_graph_rog (int tip, int cod, tipostring host)
         if (cod == 3)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_base_year.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Anual - %s", host);
+            sprintf(tittle, "Year - %s", host);
             strcpy(start, "-1year2months");
             strcpy(x_axis, "WEEK:1:MONTH:1:MONTH:1:2678400:%b");
         }
@@ -285,7 +285,7 @@ fflush(stdout);
             "CDEF:threshold_fill=threshold,UN,thres_fill,threshold,IF",
             "CDEF:normal=convs_source,threshold,LT,convs_source,0,IF",
             "CDEF:comprometido=convs_source,threshold,GT,convs_source,0,IF",
-            "COMMENT:           Ultimo   Maximo   Media\\n",
+            "COMMENT:           Last   Max   Avg\\n",
             "AREA:convs_source#00FF00:Normal    ",
             "LINE0.4:convs_source#000000",
             "GPRINT:normal:LAST:%6.0lf",
@@ -327,7 +327,7 @@ fflush(stdout);
         if (cod == 0)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_traf_day.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Diario - %s", host);
+            sprintf(tittle, "Dday - %s", host);
             strcpy(start, "-1day12hours");
             strcpy(x_axis, "HOUR:1:HOUR:1:HOUR:2:0:%H");
         }
@@ -335,7 +335,7 @@ fflush(stdout);
         if (cod == 1)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_traf_week.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Semanal - %s", host);
+            sprintf(tittle, "Week - %s", host);
             strcpy(start, "-1week2days");
             strcpy(x_axis, "HOUR:8:DAY:1:DAY:1:86400:%a");
         }
@@ -343,7 +343,7 @@ fflush(stdout);
         if (cod == 2)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_traf_month.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Mensal - %s", host);
+            sprintf(tittle, "Month - %s", host);
             strcpy(start, "-1month1week");
             strcpy(x_axis, "DAY:1:WEEK:1:WEEK:1:604800:Semana %W");
         }
@@ -351,7 +351,7 @@ fflush(stdout);
         if (cod == 3)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_traf_year.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Anual - %s", host);
+            sprintf(tittle, "Year - %s", host);
             strcpy(start, "-1year2months");
             strcpy(x_axis, "WEEK:1:MONTH:1:MONTH:1:2678400:%b");
         }
@@ -370,7 +370,7 @@ fflush(stdout);
             "-t", tittle,
             "-s", start,
             "-x", x_axis,
-            "-v", "Trafego",
+            "-v", "Traffic",
             "-z",
             "-a", "PNG",
             "-w", "400",
@@ -387,21 +387,21 @@ fflush(stdout);
             "CDEF:bits_out=bytes_out,8,*",
             "CDEF:kbits_in=bytes_in,8,*,1000,/",
             "CDEF:kbits_out=bytes_out,8,*,1000,/",
-            "COMMENT:            Ultimo   Maximo   Media     Total\\n",
+            "COMMENT:            Last   Max   Avg     Total\\n",
             "AREA:bits_in#00FF00:Download (kbps)",
             "LINE0.4:bits_in#000000",
             "GPRINT:kbits_in:LAST:%6.0lf",
             "GPRINT:kbits_in:MAX:%6.0lf",
             "GPRINT:kbits_in:AVERAGE:%6.0lf",
             "CDEF:megas_in=bytes_in,1048576,/",
-            "VDEF:total_in=megas_in,TOTAL",
+            "VDEF:total_in=MB_in,TOTAL",
             "GPRINT:total_in:%9.1lf (MB)\\n",
             "LINE1:bits_out#5500FF:Upload (kbps)  ",
             "GPRINT:kbits_out:LAST:%6.0lf",
             "GPRINT:kbits_out:MAX:%6.0lf",
             "GPRINT:kbits_out:AVERAGE:%6.0lf",
             "CDEF:megas_out=bytes_out,1048576,/",
-            "VDEF:total_out=megas_out,TOTAL",
+            "VDEF:total_out=MB_out,TOTAL",
             "GPRINT:total_out:%9.1lf (MB)\\n",
             "COMMENT:\\n",
             rrdmtime_comment,
