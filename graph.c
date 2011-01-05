@@ -292,7 +292,7 @@ fflush(stdout);
             "GPRINT:normal:MAX:%6.0lf",
             "GPRINT:normal:AVERAGE:%6.0lf\\n",
             "AREA:acima_mark",
-            "AREA:acima_print#FF0000:Comprometido    :STACK",
+            "AREA:acima_print#FF0000:Committed    :STACK",
             "LINE0.4:acima_print#000000",
             "GPRINT:comprometido:LAST:%6.0lf",
             "GPRINT:comprometido:MAX:%6.0lf",
@@ -303,7 +303,7 @@ fflush(stdout);
             "GPRINT:baseline:MAX:%6.0lf",
             "GPRINT:baseline:AVERAGE:%6.0lf\\n",
             "LINE2:threshold_fill#FF00FF",
-            "LINE2:threshold#FF00FF:Limite    ",
+            "LINE2:threshold#FF00FF:Limit    ",
             "GPRINT:threshold:LAST:%6.0lf",
             "GPRINT:threshold:MAX:%6.0lf",
             "GPRINT:threshold:AVERAGE:%6.0lf\\n",
@@ -327,7 +327,7 @@ fflush(stdout);
         if (cod == 0)
         {
             sprintf(arquivo_png, "%s/graph/%s_%d_traf_day.png", base_www, host, flow_capture_time_sec);
-            sprintf(tittle, "Dday - %s", host);
+            sprintf(tittle, "Day - %s", host);
             strcpy(start, "-1day12hours");
             strcpy(x_axis, "HOUR:1:HOUR:1:HOUR:2:0:%H");
         }
@@ -394,14 +394,14 @@ fflush(stdout);
             "GPRINT:kbits_in:MAX:%6.0lf",
             "GPRINT:kbits_in:AVERAGE:%6.0lf",
             "CDEF:megas_in=bytes_in,1048576,/",
-            "VDEF:total_in=MB_in,TOTAL",
+            "VDEF:total_in=megas_in,TOTAL",
             "GPRINT:total_in:%9.1lf (MB)\\n",
             "LINE1:bits_out#5500FF:Upload (kbps)  ",
             "GPRINT:kbits_out:LAST:%6.0lf",
             "GPRINT:kbits_out:MAX:%6.0lf",
             "GPRINT:kbits_out:AVERAGE:%6.0lf",
             "CDEF:megas_out=bytes_out,1048576,/",
-            "VDEF:total_out=MB_out,TOTAL",
+            "VDEF:total_out=megas_out,TOTAL",
             "GPRINT:total_out:%9.1lf (MB)\\n",
             "COMMENT:\\n",
             rrdmtime_comment,
