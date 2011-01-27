@@ -29,7 +29,7 @@ void adicionar_registro_arvore (tipostring ip, long recv_f, long recv_b, long se
     {
         if (!(raiz = (SearchTree) malloc(sizeof(struct TreeNode))))
         {
-            printf("Sem memoria para continuar.\n");
+            printf("Not enough memory to continue.\n");
             exit(1);
         }
 
@@ -66,7 +66,7 @@ void adicionar_registro_arvore (tipostring ip, long recv_f, long recv_b, long se
     {
         if (!(novo_nodo = (SearchTree) malloc(sizeof(struct TreeNode))))
         {
-            printf("Sem memoria para continuar.\n");
+            printf("Not enough memory to continue.\n");
             exit(1);
         }
 
@@ -300,11 +300,11 @@ void mostrar_top_users (tipostring tipo)
 
     if (!strcmp(tipo, "frames_recv"))
     {
-        printf("Top Users Frames Recebidos:\n");
+        printf("Top Users Frames Recived:\n");
         comeca = top_users_frames_recv;
         while (comeca)
         {
-            if (strcmp(comeca->info, "vago"))
+            if (strcmp(comeca->info, "vague"))
             {
                 printf("IP: %s ->", comeca->info);
                 printf(" Recv Frames: %ld", comeca->recv_f);
@@ -316,11 +316,11 @@ void mostrar_top_users (tipostring tipo)
     }
     else if (!strcmp(tipo, "frames_sent"))
     {
-        printf("Top Users Frames Enviados:\n");
+        printf("Top Users Frames Sent:\n");
         comeca = top_users_frames_sent;
         while (comeca)
         {
-            if (strcmp(comeca->info, "vago"))
+            if (strcmp(comeca->info, "vague"))
             {
                 printf("IP: %s ->", comeca->info);
                 printf(" Sent Frames: %ld", comeca->sent_f);
@@ -332,11 +332,11 @@ void mostrar_top_users (tipostring tipo)
     }
     else if (!strcmp(tipo, "bytes_recv"))
     {
-        printf("Top Users Bytes Recebidos:\n");
+        printf("Top Users Bytes Recived:\n");
         comeca = top_users_bytes_recv;
         while (comeca)
         {
-            if (strcmp(comeca->info, "vago"))
+            if (strcmp(comeca->info, "vague"))
             {
                 printf("IP: %s ->", comeca->info);
                 printf(" Recv Bytes: %ld", comeca->recv_b);
@@ -348,7 +348,7 @@ void mostrar_top_users (tipostring tipo)
     }
     else if (!strcmp(tipo, "bytes_sent"))
     {
-        printf("Top Users Bytes Enviados:\n");
+        printf("Top Users Bytes Sent:\n");
         comeca = top_users_bytes_sent;
         while (comeca)
         {

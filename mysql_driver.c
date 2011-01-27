@@ -52,7 +52,7 @@ MYSQL * conectar (void)
 
     if (!flag_conectou)
     {
-        printf("Erro ao conectar ao banco: %s\n", mysql_error(mysql_conn));
+        printf("Error connecting to database: %s\n", mysql_error(mysql_conn));
         mysql_close(mysql_conn);
         return NULL;
     }
@@ -82,7 +82,7 @@ MYSQL_RES * sql(tipostring query, MYSQL *mysql_conn)
     t = mysql_real_query(mysql_conn, query, (unsigned int) strlen(query));
     if (t)
     {
-        printf("Erro ao fazer a query: %s\n", mysql_error(mysql_conn));
+        printf("Error when doing a query: %s\n", mysql_error(mysql_conn));
         return NULL;
     }
     else

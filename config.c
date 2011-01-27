@@ -96,7 +96,7 @@ void mostrar_configuracoes (void)
     printf("DB_Name: %s\n", db_name);
 
     printf("\n");
-    printf("Interfaces de Rede: %d\n", num_interfaces);
+    printf("Network Interfaces : %d\n", num_interfaces);
     for(i=0; i<num_interfaces; i++)
         printf("%s\n", interfaces[i]);
 
@@ -258,7 +258,7 @@ void carregar_configuracoes (tipostring arquivo)
                 flow_capture_time_min = atoi(row[0]);
                 if (flow_capture_time_min < 1 || flow_capture_time_min > 10)
                 {
-                    printf("Valor de flow_capture_time=%d está fora do intervalo permitido\n", flow_capture_time_min);
+                    printf("Value of flow_capture_time=%d is out of range\n", flow_capture_time_min);
                 }
                 flow_capture_time_sec = flow_capture_time_min * 60; // transforma os minutos em segundos
 

@@ -29,7 +29,7 @@ void registrar_evento (tipostring host, long convs_as_source, long baseline, tip
 
     if ((conn = conectar()))
     {
-        printf("Registrando novo evento %s %ld %ld %s\n", host, convs_as_source, baseline, description);
+        printf("Registering new event %s %ld %ld %s\n", host, convs_as_source, baseline, description);
         sprintf(query, "INSERT INTO %s VALUES('%s', '%ld', '%ld', '%s', '%s', '%s', '%s');",
             EVENTOS_T, host, convs_as_source, baseline, data, hora, week_day, description);
         res = sql(query, conn);

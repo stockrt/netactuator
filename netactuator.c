@@ -145,10 +145,10 @@ int main (int argc, char *argv[])
             carregar_configuracoes(in_opt);
 
             // Aguarda até a thread carregar todas as configs
-            printf("Inicializando o netactuator...\n");
+            printf("Launching netactuator...\n");
             while (flag_loading_config) // enquanto carregando configurações, aguarda
             {
-                printf("Aguardando as configs..\n");
+                printf("Loading configs..\n");
                 usleep(DELAY_MAIN);
             }
 
@@ -287,7 +287,7 @@ Passos:
                     top_users_convs_as_destin = criar_lista(top_users);
 
                     gerar_top_users(raiz);
-                    final("GERAR TOP USERS");
+                    final("Generating TOP USERS");
 
 
 //                    mostrar_top_users("convs_as_source");
@@ -305,7 +305,7 @@ Passos:
 
                     inicial();
                     gerar_top_users_db();
-                    final("GERAR TOP USERS DB");
+                    final("Generating TOP USERS DB");
 
                     // 10 - LIBERAÇÃO DA MEMÓRIA
                     destruir_arvore(raiz);

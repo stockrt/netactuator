@@ -106,7 +106,7 @@ void on_the_fly (void)
                 if (expire_time <= data_hora && expire_time != 0)
                 {
                     desbloquear_host(host);
-                    registrar_evento(host, -1, -1, "Desbloqueado");
+                    registrar_evento(host, -1, -1, "Unlocked");
                 }
                 else
                     bloquear_host(host, 0); // Será testado se já está ou não bloqueado

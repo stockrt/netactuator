@@ -28,7 +28,7 @@ FILE *rfopen (tipostring file_temp, tipostring modo)
     if (temp_handler == NULL)
     {
         printf("\n\n");
-        printf("Problema ao abrir o arquivo: %s", file_temp);
+        printf("Problem opeing file: %s", file_temp);
         printf("\n\n");
         return NULL;
     }
@@ -48,7 +48,7 @@ FILE *rpopen (tipostring cmd_temp, tipostring modo)
     if (temp_handler == NULL)
     {
         printf("\n\n");
-        printf("Problema ao executar o comando: %s", cmd_temp);
+        printf("Problem executing command: %s", cmd_temp);
         printf("\n\n");
         return NULL;
     }

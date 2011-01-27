@@ -17,7 +17,7 @@
  */
 
 
-// Verifica se um IP está na lista de whitelisteds ou não
+// Checks if an IP is on the whitelist or not
 int is_whitelisted (tipostring info)
 {
     int i;
@@ -27,16 +27,16 @@ int is_whitelisted (tipostring info)
     {
         if (strcmp(info, whitelist[i]) == 0)
         {
-            // Achou o IP na whitelist
-            return 1;    // Eh whitelisted
+            // Found in the IP whitelist
+            return 1;    // Whitelisted
         }
     }
 
-    return 0;    // Nao eh whitelisted
+    return 0;    // Not whitelisted
 }
 
 
-// Avisa aos contatos administrativos sobre a ação tomada pelo netactuator
+// Advises the administrative contacts on the action taken by netactuator
 void avisar_contatos_adm (SearchTree comeca, long baseline)
 {
     int i;
@@ -45,9 +45,9 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
     tipostring comando;
 
 
-    printf("Enviando e-mail...\n");
+    printf("Sending e-mail...\n");
 
-    // Se não for whitelisted
+    // If it is not whitelisted
     if (!is_whitelisted(comeca->info))
     {
         strcpy(mail_temp_file, "/tmp/netactuator_mail_temp_file.txt");
@@ -56,12 +56,12 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
         {
             if (mail_handler = rfopen(mail_temp_file, "wt"))
             {
-                fprintf(mail_handler, "Host \"%s\" com \"%ld\" conversações como origem foi bloqueado pelo netactuator.\n", comeca->info, comeca->convs_as_source);
+                fprintf(mail_handler, "Host \"%s\" with \"%ld\" conversations as origin was blocked by netactuator.\n", comeca->info, comeca->convs_as_source);
                 fprintf(mail_handler, "Baseline: %ld\n", baseline);
-                fprintf(mail_handler, "Limite: %.0f\n\n", baseline * threshold);
+                fprintf(mail_handler, "Limit: %.0f\n\n", baseline * threshold);
                 fclose(mail_handler);
-                printf("Mandando mail para %s\n", admin_contacts[i]);
-                sprintf(comando, "mail -s 'netactuator - Alerta Host \"%s\"' %s < %s", comeca->info, admin_contacts[i], mail_temp_file);
+                printf("Sending mail to %s\n", admin_contacts[i]);
+                sprintf(comando, "mail -s 'netactuator - Alert at Host \"%s\"' %s < %s", comeca->info, admin_contacts[i], mail_temp_file);
                 if (flag_send_email)
                     system(comando);
             }
@@ -77,7 +77,7 @@ void avisar_contatos_adm (SearchTree comeca, long baseline)
 }
 
 
-// Aplica a regra de firewall ao host detectado como intruso
+// Apply the rule to the firewall with the host detected as an intruder
 int bloquear_host (tipostring info, int expire)
 {
     FILE *in_handler;
@@ -86,9 +86,9 @@ int bloquear_host (tipostring info, int expire)
     int flag_bloqueado=0;
 
 
-//    printf("Aplicando regra de firewall...\n");
+//    printf("Apllying to firewall...\n");
 
-    // Se não for whitelisted
+    // If it is not whitelisted
     if (!is_whitelisted(info))
     {
         if (is_ipfw)
@@ -111,7 +111,7 @@ int bloquear_host (tipostring info, int expire)
             else if (is_iptables)
                 sprintf(comando, "%s -I INPUT -t filter -s %s -j DROP", fire_bin, info);
 
-            printf("Bloqueando host: %s\n", info);
+            printf("Blocking host: %s\n", info);
             if (flag_block_hosts)
                 system(comando);
             inserir_blacklist(info, expire);
@@ -129,7 +129,7 @@ int bloquear_host (tipostring info, int expire)
 }
 
 
-// Aplica a regra de liberação no firewall
+// Apply the rule of liberation in firewall
 void desbloquear_host (tipostring info)
 {
     FILE *in_handler;
@@ -138,7 +138,7 @@ void desbloquear_host (tipostring info)
     int flag_bloqueado=0;
 
 
-//    printf("Aplicando regra de liberação de firewall...\n");
+//    printf("Apply the rule of liberation in firewall...\n");
 
     if (is_ipfw)
         sprintf(comando, "%s list | grep \"deny ip from %s to any\"", fire_bin, info);
@@ -160,7 +160,7 @@ void desbloquear_host (tipostring info)
         else if (is_iptables)
             sprintf(comando, "%s -D INPUT -t filter -s %s -j DROP", fire_bin, info);
 
-        printf("Liberando host: %s\n", info);
+        printf("Releasing host: %s\n", info);
         if (flag_block_hosts)
             system(comando);
         fflush(stdout);

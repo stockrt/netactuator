@@ -71,7 +71,7 @@ void mostrar_registros_arvore (SearchTree comeca)
         printf(" Sent Frames: %ld", comeca->sent_f);
         printf(" Sent Bytes: %ld", comeca->sent_b);
         printf(" Source: %ld", comeca->convs_as_source);
-        printf(" Destino: %ld", comeca->convs_as_destin);
+        printf(" Destina: %ld", comeca->convs_as_destin);
         printf(" Iface: %s", comeca->iface);
         printf("\n");
     }
@@ -120,7 +120,7 @@ SeqList criar_lista (int nodos)
     // Cria o primeiro nodo da lista
     if (!(list = (SeqList) malloc(sizeof(struct ListNode))))
     {
-        printf("Sem memoria para continuar.\n");
+        printf("No memory to continue.\n");
         exit(1);
     }
     strcpy(list->info, "vago");
@@ -143,7 +143,7 @@ SeqList criar_lista (int nodos)
 
         if (!(atual->p = (SeqList) malloc(sizeof(struct ListNode))))
         {
-            printf("Sem memoria para continuar.\n");
+            printf("No memory to continue.\n");
             exit(1);
         }
         strcpy(atual->p->info, "vago");
@@ -174,7 +174,7 @@ void mostrar_registros_lista (SeqList comeca)
         printf(" Sent Frames: %ld", comeca->sent_f);
         printf(" Sent Bytes: %ld", comeca->sent_b);
         printf(" Source: %ld", comeca->convs_as_source);
-        printf(" Destino: %ld", comeca->convs_as_destin);
+        printf(" Destina: %ld", comeca->convs_as_destin);
         printf(" Iface: %s", comeca->iface);
         printf("\n");
     }
