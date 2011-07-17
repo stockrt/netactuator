@@ -22,7 +22,7 @@ void pmacctd_wrapper (tipostring iface)
     tipostring comando;
 
 
-    // Monta o comando a ser executado.
+    // Command to be executed for pmacct.Syntax might change with new version of pmacct.
     sprintf(comando, "%s \
             -c src_host,dst_host \
             -p /tmp/collect.pipe.%s \

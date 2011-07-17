@@ -21,7 +21,7 @@ if (isset($tb)) {
 
     $formTop = formTop($tb, $field);
 
-    // verifica tabela TOP_USERS
+    // Checking table TOP_USERS
     if($tb=='net_topusers') {
         if($toptype) {
             $formTopUsersFields = formTopUsersFields($tb, $field, $i, $action);

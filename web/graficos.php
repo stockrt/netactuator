@@ -1,5 +1,5 @@
 <form action="graficos.php" method="get">
-<b>Buscar host:</b>
+<b>Host:</b>
 <input type="text" name="criterio" size="22" maxlength="150">
 <input type="submit" value="Buscar">
 </form>
@@ -24,8 +24,8 @@ if ($_GET["criterio"]!=""){
     $criterio = " WHERE host LIKE '%" . $txt_criterio . "%'";
 }
 
-//Limito a busca
-$TAMANHO_PAGINA = 20;
+//Limit hosts per page
+$PAGING = 20;
 //examino a página a mostrar e o inicio do registro a mostrar
 $pagina = $_GET["pagina"];
 if (!$pagina) {
@@ -33,7 +33,7 @@ if (!$pagina) {
     $pagina=1;
 }
 else {
-    $inicio = ($pagina - 1) * $TAMANHO_PAGINA;
+    $inicio = ($pagina - 1) * $PAGING;
 }
 //vejo o número total de campos que há na tabela com essa busca
 //$ssql = "SELECT host FROM storage_pattern_def " . $criterio;
@@ -42,7 +42,7 @@ $rs = mysql_query($ssql,$connect);
 $num_total_registos = mysql_num_rows($rs);
 
 //calculo o total de páginas
-$total_paginas = ceil($num_total_registos / $TAMANHO_PAGINA);
+$total_paginas = ceil($num_total_registos / $PAGING);
 
 //ponho o número de registros total, o tamanho de página e a página que se mostra
 echo "Número de registros encontrados: " . $num_total_registos . " ($pagina - $total_paginas)<br><br>";
@@ -65,7 +65,7 @@ for($i=0;$i < $max; $i++) {
          &nbsp;&nbsp;<a href='graphics.php?host=".$dados."&type=base' target='main'>base</a><br></b>";
         }
         if(!file_exists("graph/".$dados."_".$time."_traf_day.png"))
-                print $dados." - Gráfico não disponível<br>";
+                print $dados." - Graph unavailable<br>";
 
 }
 echo("<br><br>");
@@ -89,4 +89,4 @@ if ($total_paginas> 1){
 
 <br />
 <br />
-<a href="menu.php" target="menu"><center><b><- Retornar ao menu</b></center></a>
+<a href="menu.php" target="menu"><center><b><- Back to menu</b></center></a>

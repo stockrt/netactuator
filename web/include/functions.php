@@ -50,19 +50,19 @@ function getDados($tb, $field, $j, $view_delete, $view_alter, $view_id, $dados) 
                 }
             }
             if($view_delete=='1')
-                print "<td width='20'><div align='left'><a href='?tb=$tb&action=delete&id=".$dados[0]."'>deletar</a></div></td>";
+                print "<td width='20'><div align='left'><a href='?tb=$tb&action=delete&id=".$dados[0]."'>Delete</a></div></td>";
             print"</tr>";
         }
 
     } else {
-        print "<tr><td colspan=".count($field)." bgcolor='#E9E9E9'><a href='main.php?tb=$tb&action=insert' target='main'>Inserir novo</a></td></tr>";
+        print "<tr><td colspan=".count($field)." bgcolor='#E9E9E9'><a href='main.php?tb=$tb&action=insert' target='main'>Insert new</td></tr>";
         while ($dados = mysql_fetch_array($res)) {
             print"<tr>";
             for($j=0; $j < count($dados); $j++) {
                 if($field[$j] != 'id')
                     print "<td><div align='center'><a href='?tb=$tb&action=alter&campo=".$field[$j]."&dado=".$dados[$j]."&id=".$dados[0]."'>".$dados[$j]."</a></div></td>";
             }
-            print "<td width='20'><div align='center'><a href='?tb=$tb&action=delete&id=".$dados[0]."'>deletar</a></div></td>";
+            print "<td width='20'><div align='center'><a href='?tb=$tb&action=delete&id=".$dados[0]."'>Delete</a></div></td>";
             print"</tr>";
         }
     }
@@ -74,7 +74,7 @@ function updateDados($tb, $campo, $dado, $j, $id, $data, $connect, $erro) {
         $update = mysql_query($sql);
         echo "<b>table</b> $tb <br> <b>campo</b> $campo <br> <b> dado </b> $dado <br> <b>data:</b> $data <br><b>id $id</b> <br> $sql";
         $action='';
-        $erro = "<b> $campo </b> alterado com sucesso!";
+        $erro = "<b> $campo </b> Change successful!";
         header('location:main.php?tb='.$tb.'&action=list');
     }
 }
@@ -105,7 +105,7 @@ function insertDados($tb, $field) {
             $update = mysql_query($sql);
             header('location:main.php?tb='.$tb.'');
         } elseif($exec=='0') {
-            print "<font color='red'><b>Todos os campos devem ser preenchidos.</b></font>";
+            print "<font color='red'><b>All fields must be filled.</b></font>";
         }
 }
 
@@ -114,7 +114,7 @@ function deleteDados($tb, $dado) {
         $sql = "DELETE FROM $tb WHERE id='".$_GET['id']."';";
         $query = mysql_query($sql);
     } else
-        echo("Erro. Valor não setado!");
+        echo("Error, value not set!");
 }
 
 function mysql_fetch_all($result) {
@@ -134,7 +134,7 @@ function getHostGraphics($dados) {
         if(file_exists("graph/".$dados."_".$time."_day.png"))
             print "<center><b><a href='graphics.php?host=".$dados."'>".$dados."</a><br></b>";
         if(!file_exists("graph/".$dados."_".$time."_day.png"))
-                print "<b>".$dados."</b> (Arquivo não encontrado) <br>";
+                print "<b>".$dados."</b> (File does not exist) <br>";
     }
 }
 

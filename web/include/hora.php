@@ -1,24 +1,24 @@
 <?php
-$diasemana[0] = "Domingo";
-$diasemana[1] = "Segunda-feira";
-$diasemana[2] = "Terça-feira";
-$diasemana[3] = "Quarta-feira";
-$diasemana[4] = "Quinta-feira";
-$diasemana[5] = "Sexta-feira";
-$diasemana[6] = "Sábado";
+$diasemana[0] = "Sunday";
+$diasemana[1] = "Monday";
+$diasemana[2] = "Tuesday";
+$diasemana[3] = "Wednesday";
+$diasemana[4] = "Thursday";
+$diasemana[5] = "Friday";
+$diasemana[6] = "Saturday";
 
-$mesnome[1] = "janeiro";
-$mesnome[2] = "fevereiro";
-$mesnome[3] = "março";
-$mesnome[4] = "abril";
-$mesnome[5] = "maio";
-$mesnome[6] = "junho";
-$mesnome[7] = "julho";
-$mesnome[8] = "agosto";
-$mesnome[9] = "setembro";
-$mesnome[10] = "outubro";
-$mesnome[11] = "novembro";
-$mesnome[12] = "dezembro";
+$mesnome[1] = "January";
+$mesnome[2] = "February";
+$mesnome[3] = "March";
+$mesnome[4] = "April";
+$mesnome[5] = "May";
+$mesnome[6] = "June";
+$mesnome[7] = "July";
+$mesnome[8] = "August";
+$mesnome[9] = "September";
+$mesnome[10] = "October";
+$mesnome[11] = "November";
+$mesnome[12] = "December";
 
 $ano = date('Y');
 $mes = date('n');

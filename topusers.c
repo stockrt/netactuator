@@ -156,7 +156,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_frames_recv;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->recv_f > comeca->recv_f)
             {
                 // Inserção
@@ -176,7 +176,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_frames_sent;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->sent_f > comeca->sent_f)
             {
                 // Inserção
@@ -196,7 +196,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_bytes_recv;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->recv_b > comeca->recv_b)
             {
                 // Inserção
@@ -216,7 +216,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_bytes_sent;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->sent_b > comeca->sent_b)
             {
                 // Inserção
@@ -236,7 +236,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_convs_as_source;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->convs_as_source > comeca->convs_as_source)
             {
                 // Inserção
@@ -256,7 +256,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
         comeca = top_users_convs_as_destin;
         while (comeca)
         {
-            // Se o valor proposto eh maior do que o atual neste nodo, insere
+            // If the value is higher than proposed in the node, we are insterting it
             if (to_insert->convs_as_destin > comeca->convs_as_destin)
             {
                 // Inserção
@@ -274,7 +274,7 @@ void inserir_top_user (SearchTree to_insert, tipostring tipo)
 }
 
 
-// Cadastra os Top Users nas listas varrendo toda a arvore a partir da raiz
+// Register Top Users nas listas varrendo toda a arvore a partir da raiz
 void gerar_top_users (SearchTree comeca)
 {
     if (comeca)
@@ -292,7 +292,7 @@ void gerar_top_users (SearchTree comeca)
 }
 
 
-// Mostra a lista de Top Users de acordo com o relatório pedido
+// Shows list of acording to peroid of time
 void mostrar_top_users (tipostring tipo)
 {
     SeqList comeca=NULL;

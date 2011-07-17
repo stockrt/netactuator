@@ -12,7 +12,7 @@ function topTabelas() {
     print "
         <table width='80%' border='1' cellspacing='2' cellpadding='2' bordercolor='#FFFFFF'>
           <tr>
-            <td colspan='10' bgcolor='#CCE6FF' bordercolor='#000000'><div align='center'><strong>Tabelas</strong></div></td>
+            <td colspan='10' bgcolor='#CCE6FF' bordercolor='#000000'><div align='center'><strong>Tables</strong></div></td>
           </tr>
           <tr>
     ";
@@ -79,7 +79,7 @@ function formGraphics() {
     print"
         <tr>
             <td bordercolor='#000000'><strong>
-                &nbsp;&nbsp; <a href='graficos.php'>Gráficos</a>
+                &nbsp;&nbsp; <a href='graficos.php'>Graphs</a>
             </strong></td>
         </tr>
     ";
@@ -103,7 +103,7 @@ function formUpdateItem($tb, $campo, $dado, $i, $id, $data, $erro, $action) {
                 <input type='text' name='data' value='$dado'>
                 </label>
               <label>
-              <input type='submit' name='Submit' value='Enviar' />
+              <input type='submit' name='Submit' value='Submit' />
               </label>
             </form>
       </td>
@@ -135,7 +135,7 @@ function formInsertDados($tb, $field) {
         </tr>
         <tr>
           <td colspan='".count(field)."'>
-            <label>  <input type='submit' name='Submit' value='Enviar' /> </label>
+            <label>  <input type='submit' name='Submit' value='Submit' /> </label>
           </td>
         </form>
         </tr>

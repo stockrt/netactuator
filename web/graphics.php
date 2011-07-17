@@ -4,11 +4,11 @@ include "include/connect.php";
 include "include/functionLayout.php";
 include "include/functions.php";
 include "include/refresh.php";
-//tipo de gráfico
+//Graph type
 $type = $_GET['type'];
 
 if (!$result) {
-    print "DB Error, não pude listar as tabelas\n";
+    print "DB Error, couldn't list tables\n";
     print 'MySQL Error: ' . mysql_error();
     exit;
 }
@@ -24,18 +24,18 @@ if(!isset($host)) {
         if(file_exists("graph/".$dados."_".$time."_".$type."_day.png"))
             print "<b><a href='graphics.php?host=".$dados."&type=".$type."'>".$dados."</a><br></b>";
         if(!file_exists("graph/".$dados."_".$time."_".$type."_day.png"))
-                print $dados." - Gráfico não disponível<br>";
+                print $dados." - Graph unavailable<br>";
     }
 
 } elseif (isset($host)){
     print "<center><b><font size='3'>$host - $type</font><br><br>";
-    //print "Diário<br>";
+    //print "Day<br>";
     print "<img src='graph/".$host."_".$time."_".$type."_day.png'><br><br>";
-    //print "Semanal<br>";
+    //print "Week<br>";
     print "<img src='graph/".$host."_".$time."_".$type."_week.png'><br><br>";
-    //print "Mensal<br>";
+    //print "Month<br>";
     print "<img src='graph/".$host."_".$time."_".$type."_month.png'><br><br>";
-    //print "Anual<br>";
+    //print "Year<br>";
     print "<img src='graph/".$host."_".$time."_".$type."_year.png'><br><br>";
 }
 ?>

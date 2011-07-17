@@ -37,7 +37,7 @@ include "include/functions.php";
 include "include/refresh.php";
 
 if (!$result) {
-    print "DB Error, não pude listar as tabelas\n";
+    print "DB Error, couldn't list tables\n";
     print 'MySQL Error: ' . mysql_error();
     exit;
 }
@@ -45,9 +45,9 @@ if (!$result) {
 $topTabelas = topTabelas();
 
 while ($row = mysql_fetch_row($result)) {
-    // pegar as propriedades das configurações de config_tables
+    // Get properties of configuration in config_tables
     $checkConfigTables = checkConfigTables($row);
-    // checar as visões das tabelas
+    // Checking the tables
     if(checkViewTables($row)) {
         // exibir tabelas
         $formTables = formTables($row, $description);
