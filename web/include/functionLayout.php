@@ -31,7 +31,7 @@ function formTables($row, $description) {
 
 function formFields($tb, $field, $i, $action, $view_insert, $view_alter, $view_id) {
     if($view_insert=='1') {
-        print "<tr><td colspan=".count($field)." bgcolor='#E9E9E9'><a href='main.php?tb=$tb&action=insert' target='main'>Inserir novo</a></td></tr>";
+        print "<tr><td colspan=".count($field)." bgcolor='#E9E9E9'><a href='main.php?tb=$tb&action=insert' target='main'>Insert new</a></td></tr>";
     }
     print "<tr>";
     for($j=0; $j < count($field); $j++)
